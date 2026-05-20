@@ -4,6 +4,12 @@
 
 跨平台 Python 工具，对上游 [PinchBench](https://pinchbench.com/) 公开数据做二次处理，产出交互式中英双语 HTML 排行榜。
 
+**逐任务排行榜** (./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html)
+
+**大类聚合排行榜**(./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_category_rankings.html)
+
+
+
 **核心特性**：以**单次提交（submission）**为最小粒度做二元有效性判定 → 严格版本管理 → 任务级 / 大类级 / 总排行榜三层聚合 → 7 指标自包含 HTML（成功率 / 成本 / 耗时 / 性价比 / 时效比 / 参数量 / 运行次数）→ 国别 + 开源属性筛选。
 
 数据来源：[PinchBench](https://pinchbench.com/)（[MIT 协议开源](https://github.com/pinchbench/leaderboard)，由 kilo.ai 主导）。本工具不修改任何模型的原始提交数据，仅做有效性校验与聚合呈现，感谢 PinchBench 团队开放数据。
