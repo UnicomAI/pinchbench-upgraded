@@ -4,6 +4,11 @@
 
 Cross-platform Python tool that performs secondary processing on the upstream [PinchBench](https://pinchbench.com/) public data and produces interactive bilingual (zh/en) HTML leaderboards.
 
+- **task_rankings**：[task_rankings.html](./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html)
+
+- **category_rankings**：[category_rankings.html](./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_category_rankings.html)
+
+
 **Highlights**: binary validity check at the **single-submission** granularity → strict version management → three-tier aggregation (per-task / per-category / overall) → 7-metric self-contained HTML (success rate / cost / duration / value / time efficiency / parameters / runs) → country + open-weight filters.
 
 Data source: [PinchBench](https://pinchbench.com/) ([MIT-licensed open source](https://github.com/pinchbench/leaderboard), led by kilo.ai). This tool never modifies any model's original submission data — it only re-validates and re-aggregates for presentation. Thanks to the PinchBench team for releasing the data.
