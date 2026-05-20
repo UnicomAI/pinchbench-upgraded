@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+
+{% block title %}PinchBench-Upgraded 大类排行榜{% endblock %}
+
+{% block sidebar %}
+<div class="sidebar-list">
+  <a class="sidebar-link" href="#top" data-i18n="section_overview">概览</a>
+  <a class="sidebar-link" href="#filtered-out-models" data-i18n="section_filtered_out">筛除模型归因</a>
+  <a class="sidebar-link" href="#metrics" data-i18n="section_metrics">指标说明</a>
+  <a class="sidebar-link" href="#cat-overview" data-i18n="section_catoverview">大类与任务</a>
+</div>
+<div class="sidebar-divider"></div>
+<div class="sidebar-list">
+  <a class="sidebar-link sidebar-link-overall" href="#filter-bar" data-i18n="section_models">模型列表</a>
+  <a class="sidebar-link sidebar-link-overall" href="#overall" data-i18n="section_overall">总排行榜</a>
+</div>
+<div class="sidebar-divider"></div>
+<div class="sidebar-group-label" data-i18n="sidebar_cats">大类列表</div>
+<div class="sidebar-list">
+  {% for cat in categories %}
+  <a class="sidebar-link" href="#{{ cat.category_name_zh }}">
+    <span data-lang="zh">{{ cat.category_name_zh }}</span>
+    <span data-lang="en">{{ cat.category_name_en }}</span>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="page-header" id="top">
+  <h1 class="page-title" data-i18n="page_title_cat">大类排行榜</h1>
+  <div class="page-intro">
+    <div data-lang="zh">
+      本榜单数据来源于 <a href="https://pinchbench.com/" target="_blank" rel="noopener">PinchBench</a>。本榜是「任务排行榜」之上的二次聚合——大类划分采用 PinchBench 官方分类，每个大类下的指标由属于该大类的任务横向聚合得到（成功率取均值、成本与耗时按任务数加和），并额外提供「总排行榜」覆盖全部任务。任务级指标的二元判定与计算规则详见任务排行榜页面。感谢 PinchBench 团队开放数据。
+      <div class="page-intro-refs">
+        参考链接：<a href="https://github.com/pinchbench/skill/tree/main" target="_blank" rel="noopener">PinchBench 任务详情</a> · <a href="https://github.com/pinchbench/api" target="_blank" rel="noopener">PinchBench 数据来源</a>
+      </div>
+    </div>
+    <div data-lang="en">
+      Data for this leaderboard is sourced from <a href="https://pinchbench.com/" target="_blank" rel="noopener">PinchBench</a>. This view is a secondary aggregation on top of the Task Rankings — category boundaries follow PinchBench's official classification, and each category's metrics are aggregated across its constituent tasks (success rate averaged, cost and duration summed by task count); an additional "Overall" entry covers all tasks. Task-level binary validation and formulas are documented on the Task Rankings page. Thanks to the PinchBench team for releasing the data.
+      <div class="page-intro-refs">
+        References: <a href="https://github.com/pinchbench/skill/tree/main" target="_blank" rel="noopener">PinchBench Tasks</a> · <a href="https://github.com/pinchbench/api" target="_blank" rel="noopener">PinchBench API</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-label" data-i18n="stat_benchmark">PinchBench 版本</div>
+    <div class="stat-value">{{ selected_benchmark_versions | join(', ') if selected_benchmark_versions else '—' }}</div>
+    <div class="stat-meta">
+      <span data-lang="zh">生成时间：{{ source_generated_at | beijing }}</span>
+      <span data-lang="en">Generated at: {{ source_generated_at | beijing_en }}</span>
+    </div>
+  </div>
+  <div class="stat-card stat-card-multi">
+    <div class="stat-label" data-i18n="stat_models_card">模型</div>
+    <div class="stat-row">
+      <div class="stat-sub">
+        <div class="stat-sub-label" data-i18n="stat_sub_official">官方</div>
+        <div class="stat-sub-value">{{ official_models }}</div>
+      </div>
+      <div class="stat-sub-divider">/</div>
+      <div class="stat-sub is-filtered">
+        <div class="stat-sub-label" data-i18n="stat_sub_filtered">筛除</div>
+        <div class="stat-sub-value">{{ filtered_out_count }}</div>
+      </div>
+      <div class="stat-sub-divider">/</div>
+      <div class="stat-sub is-valid">
+        <div class="stat-sub-label" data-i18n="stat_sub_valid">有效</div>
+        <div class="stat-sub-value">{{ ranking_model_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="stat-card stat-card-multi">
+    <div class="stat-label" data-i18n="stat_submissions_card">提交记录</div>
+    <div class="stat-row">
+      <div class="stat-sub">
+        <div class="stat-sub-label" data-i18n="stat_sub_total">总数</div>
+        <div class="stat-sub-value">{{ total_valid_submissions + total_invalid_submissions }}</div>
+      </div>
+      <div class="stat-sub-divider">/</div>
+      <div class="stat-sub is-filtered">
+        <div class="stat-sub-label" data-i18n="stat_sub_filtered">筛除</div>
+        <div class="stat-sub-value">{{ total_invalid_submissions }}</div>
+      </div>
+      <div class="stat-sub-divider">/</div>
+      <div class="stat-sub is-valid">
+        <div class="stat-sub-label" data-i18n="stat_sub_valid">有效</div>
+        <div class="stat-sub-value">{{ total_valid_submissions }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="filtered-out-models">
+  <div class="panel">
+    <div class="panel-title" data-i18n="section_filtered_out">筛除模型归因</div>
+    <div class="panel-body" style="margin-bottom:14px">
+      <div data-lang="zh">以下模型在选定 PinchBench 基准版本下的全部提交记录均失效，不进入任何排行榜。每个模型对应的失效原因如下表所示，一个模型可同时命中多个原因。</div>
+      <div data-lang="en">Models below have all submissions invalid under the selected PinchBench version and are excluded from all rankings. Each model's failure reasons are shown in the table below; a single model may match multiple reasons.</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="col_model_name">模型</th>
+            <th style="text-align:right" data-i18n="col_record_count">记录总数</th>
+            <th style="text-align:center" data-i18n="col_canonical_extra">任务数量过多</th>
+            <th style="text-align:center" data-i18n="col_canonical_missing">任务数量过少</th>
+            <th style="text-align:center" data-i18n="col_task_time_zero">缺少时间统计</th>
+            <th style="text-align:center" data-i18n="col_cost_zero">缺少成本统计</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for model in filtered_out_models %}
+          {% set r = model.invalid_reasons or {} %}
+          <tr>
+            <td style="font-size:13px;font-family:var(--font-data)">{{ model.provider }} / {{ model.model }}</td>
+            <td class="mono-dim" style="text-align:right">{{ (r.values() | sum) if r else 0 }}</td>
+            <td class="check-cell{% if (r.canonical_extra or 0) > 0 %} on{% endif %}"></td>
+            <td class="check-cell{% if (r.canonical_missing or 0) > 0 %} on{% endif %}"></td>
+            <td class="check-cell{% if (r.task_time_zero or 0) > 0 %} on{% endif %}"></td>
+            <td class="check-cell{% if (r.cost_zero or 0) > 0 %} on{% endif %}"></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="metrics">
+  <div class="panel">
+    <div class="panel-title" data-i18n="section_metrics">指标说明</div>
+    <div class="panel-body">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th><span data-lang="zh">指标</span><span data-lang="en">Metric</span></th>
+              <th><span data-lang="zh">定义</span><span data-lang="en">Definition</span></th>
+              <th><span data-lang="zh">单位</span><span data-lang="en">Unit</span></th>
+              <th><span data-lang="zh">计算公式</span><span data-lang="en">Formula</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span data-lang="zh">运行次数</span><span data-lang="en">Runs</span></td>
+              <td><span data-lang="zh">等于有效提交记录总数 K 次</span><span data-lang="en">Equals the total count K of valid submissions</span></td>
+              <td><span data-lang="zh">次</span><span data-lang="en">Times</span></td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><span data-lang="zh">参数量</span><span data-lang="en">Parameters</span></td>
+              <td><span data-lang="zh">模型参数量（自动检测 + 人工审核）</span><span data-lang="en">Model parameter count (auto-detect + manual review)</span></td>
+              <td>B</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><span data-lang="zh">成功率</span><span data-lang="en">Success Rate</span></td>
+              <td><span data-lang="zh">大类内各任务成功率的简单平均</span><span data-lang="en">Simple average of task-level success rates within the category</span></td>
+              <td>%</td>
+              <td><code>avg(task.success_rate)</code></td>
+            </tr>
+            <tr>
+              <td><span data-lang="zh">成本</span><span data-lang="en">Cost</span></td>
+              <td><span data-lang="zh">完成大类内 T 个任务一次的总成本（T = 大类内任务数）</span><span data-lang="en">Total cost to complete the T tasks in this category once (T = tasks in category)</span></td>
+              <td>USD</td>
+              <td><code><span data-lang="zh">任务级成本 × T</span><span data-lang="en">task_cost × T</span></code></td>
+            </tr>
+            <tr>
+              <td><span data-lang="zh">耗时</span><span data-lang="en">Duration</span></td>
+              <td><span data-lang="zh">完成大类内 T 个任务一次的总耗时（T = 大类内任务数）</span><span data-lang="en">Total duration to complete the T tasks in this category once (T = tasks in category)</span></td>
+              <td>min</td>
+              <td><code><span data-lang="zh">任务级耗时之和</span><span data-lang="en">Σ(task.duration for T tasks)</span></code></td>
+            </tr>
+            <tr>
+              <td><span data-lang="zh">性价比</span><span data-lang="en">Value Score</span></td>
+              <td><span data-lang="zh">大类成功率与大类成本之比</span><span data-lang="en">Category success rate divided by category cost</span></td>
+              <td>%/USD</td>
+              <td><code><span data-lang="zh">大类成功率 / 大类成本</span><span data-lang="en">cat_success_rate / cat_cost</span></code></td>
+            </tr>
+            <tr>
+              <td><span data-lang="zh">时效比</span><span data-lang="en">Time Efficiency</span></td>
+              <td><span data-lang="zh">大类成功率与大类耗时之比</span><span data-lang="en">Category success rate divided by category duration</span></td>
+              <td>%/min</td>
+              <td><code><span data-lang="zh">大类成功率 / 大类耗时</span><span data-lang="en">cat_success_rate / cat_duration</span></code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div data-lang="zh" style="margin-top:8px">「<strong>总排行榜</strong>」即 T = N（任务总数）的特殊情形，此时大类成本退化为「平均每次运行的总成本」。</div>
+        <div data-lang="en" style="margin-top:8px">The <strong>Overall Ranking</strong> is the special case where T = N (total tasks); category cost then degenerates to "average total cost per run".</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cat-overview">
+  <div class="panel">
+    <div class="panel-title" data-i18n="section_catoverview">大类与任务</div>
+    <div class="cat-grid">
+      {% for cat in categories %}
+      <div class="cat-card">
+        <div class="cat-card-name">
+          <a href="#{{ cat.category_name_zh }}">
+            <span data-lang="zh">{{ cat.category_name_zh }}</span>
+            <span data-lang="en">{{ cat.category_name_en }}</span>
+          </a>
+        </div>
+        {% for t in cat.tasks %}
+        <div class="cat-scenario">
+          <span class="cat-scenario-id">{{ t.task_id }}</span>
+          <span class="cat-scenario-name">{{ t.task_name_zh }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "_filter_bar.html" %}
+
+<section id="models">
+  <div class="panel">
+    <div class="panel-title" data-i18n="section_models">模型列表</div>
+    <div class="panel-body" style="margin-bottom:14px">按"供应商 / 模型"排序，共 {{ models | length }} 个已选模型。</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="col_seq" style="width:32px;text-align:right">#</th>
+            <th data-i18n="col_provider">供应商</th>
+            <th data-i18n="col_model">模型</th>
+            <th data-i18n="col_attr">属性</th>
+            <th style="text-align:right" data-i18n="col_total_subs">提交记录总数</th>
+            <th style="text-align:right" data-i18n="col_valid_subs">有效记录总数</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for model in models %}
+          <tr>
+            <td style="color:var(--text-3);font-size:12px;text-align:right">{{ loop.index }}</td>
+            <td style="color:var(--text-2);font-size:13px">{{ model.provider }}</td>
+            <td style="font-size:13px;font-family:var(--font-data)">{{ model.model }}</td>
+            <td>
+              {% if model.is_china_model and model.is_open_weight_model %}
+              <span class="tag tag-china-open" data-i18n="tag_china_open">中国 · 开源</span>
+              {% elif model.is_china_model and not model.is_open_weight_model %}
+              <span class="tag tag-china-closed" data-i18n="tag_china_closed">中国 · 闭源</span>
+              {% elif not model.is_china_model and model.is_open_weight_model %}
+              <span class="tag tag-other-open" data-i18n="tag_other_open">外国 · 开源</span>
+              {% else %}
+              <span class="tag tag-other-closed" data-i18n="tag_other_closed">外国 · 闭源</span>
+              {% endif %}
+            </td>
+            <td class="mono-dim">{{ model.total_submission_count }}</td>
+            <td class="mono-dim">{{ model.run_count }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="overall" class="section-card overall-section" data-cat-key="overall">
+  <div class="section-card-header">
+    <div class="section-card-title">{{ overall.category_name_zh }}</div>
+    <div class="section-card-meta">{{ overall.task_count }} 个任务 · {{ overall.row_count }} 个模型</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:50px" data-i18n="col_rank">排名</th>
+          <th data-i18n="col_model">模型</th>
+          <th data-i18n="col_provider">供应商</th>
+          <th style="text-align:right" data-i18n="col_run_count">运行次数</th>
+          <th class="sortable" data-col-idx="4" data-default-dir="asc" style="text-align:right" data-i18n="col_model_size">参数量 (B)</th>
+          <th class="sortable" data-col-idx="5" data-default-dir="desc" style="text-align:right" data-i18n="col_success_rate">成功率 (%)</th>
+          <th class="sortable" data-col-idx="6" data-default-dir="asc" style="text-align:right" data-i18n="col_cost">成本 ($)</th>
+          <th class="sortable" data-col-idx="7" data-default-dir="asc" style="text-align:right" data-i18n="col_duration_min">耗时 (min)</th>
+          <th class="sortable" data-col-idx="8" data-default-dir="desc" style="text-align:right" data-i18n="col_value">性价比 (%/USD)</th>
+          <th class="sortable" data-col-idx="9" data-default-dir="desc" style="text-align:right" data-i18n="col_time_eff_min">时效比 (%/min)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in overall.rows %}
+        <tr>
+          <td><span class="rank-badge{% if row.rank <= 3 %} rank-{{ row.rank }}{% endif %}">{{ row.rank }}</span></td>
+          <td style="font-size:13px;font-weight:500">{{ row.model }}</td>
+          <td style="font-size:12px;color:var(--text-3)">{{ row.provider }}</td>
+          <td class="mono-dim">{{ row.run_count }}</td>
+          <td class="mono">{{ fmt_model_size(row.model_size_raw) }}</td>
+          <td class="success-cell">
+            <div class="bar-fill" style="width:{{ row.average_success_rate_pct if row.average_success_rate_pct is not none else 0 }}%"></div>
+            <span class="bar-val">{{ fmt(row.average_success_rate_pct, 2) }}</span>
+          </td>
+          <td class="mono">{{ fmt(row.cost_per_run_usd, 4) }}</td>
+          <td class="mono">{{ fmt(row.avg_duration_min, 2) if row.avg_duration_min is not none else '-' }}</td>
+          <td class="mono">{{ fmt(row.value_score, 2) }}</td>
+          <td class="mono">{{ fmt(row.time_efficiency, 2) if row.time_efficiency is not none else '-' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% for cat in categories %}
+<section id="{{ cat.category_name_zh }}" class="section-card" data-cat-key="{{ cat.category_name_en }}">
+  <div class="section-card-header">
+    <div class="section-card-title">{{ cat.category_name_zh }}</div>
+    <div class="section-card-meta">{{ cat.task_count }} 个任务 · {{ cat.row_count }} 个模型</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:50px" data-i18n="col_rank">排名</th>
+          <th data-i18n="col_model">模型</th>
+          <th data-i18n="col_provider">供应商</th>
+          <th style="text-align:right" data-i18n="col_run_count">运行次数</th>
+          <th class="sortable" data-col-idx="4" data-default-dir="asc" style="text-align:right" data-i18n="col_model_size">参数量 (B)</th>
+          <th class="sortable" data-col-idx="5" data-default-dir="desc" style="text-align:right" data-i18n="col_success_rate">成功率 (%)</th>
+          <th class="sortable" data-col-idx="6" data-default-dir="asc" style="text-align:right" data-i18n="col_cost">成本 ($)</th>
+          <th class="sortable" data-col-idx="7" data-default-dir="asc" style="text-align:right" data-i18n="col_duration_min">耗时 (min)</th>
+          <th class="sortable" data-col-idx="8" data-default-dir="desc" style="text-align:right" data-i18n="col_value">性价比 (%/USD)</th>
+          <th class="sortable" data-col-idx="9" data-default-dir="desc" style="text-align:right" data-i18n="col_time_eff_min">时效比 (%/min)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in cat.rows %}
+        <tr>
+          <td><span class="rank-badge{% if row.rank <= 3 %} rank-{{ row.rank }}{% endif %}">{{ row.rank }}</span></td>
+          <td style="font-size:13px;font-weight:500">{{ row.model }}</td>
+          <td style="font-size:12px;color:var(--text-3)">{{ row.provider }}</td>
+          <td class="mono-dim">{{ row.run_count }}</td>
+          <td class="mono">{{ fmt_model_size(row.model_size_raw) }}</td>
+          <td class="success-cell">
+            <div class="bar-fill" style="width:{{ row.average_success_rate_pct if row.average_success_rate_pct is not none else 0 }}%"></div>
+            <span class="bar-val">{{ fmt(row.average_success_rate_pct, 2) }}</span>
+          </td>
+          <td class="mono">{{ fmt(row.cost_per_run_usd, 4) }}</td>
+          <td class="mono">{{ fmt(row.avg_duration_min, 2) if row.avg_duration_min is not none else '-' }}</td>
+          <td class="mono">{{ fmt(row.value_score, 2) }}</td>
+          <td class="mono">{{ fmt(row.time_efficiency, 2) if row.time_efficiency is not none else '-' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endfor %}
+
+<script id="ranking-data" type="application/json">{{ all_data_json | safe }}</script>
+{% endblock %}

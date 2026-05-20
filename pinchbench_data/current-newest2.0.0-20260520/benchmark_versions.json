@@ -1,0 +1,7 @@
+{
+  "fetched_at": "2026-05-20T02:45:13.797Z",
+  "benchmark_versions": [
+    "2.0.0"
+  ],
+  "note": "这些 benchmark_version 是 pinchbench/skill 仓库的 commit hash。默认 leaderboard 接口返回 current 视图；指定 benchmark_version 可查看某个历史快照。"
+}

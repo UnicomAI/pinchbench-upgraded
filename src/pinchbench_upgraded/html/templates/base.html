@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}PinchBench-Upgraded{% endblock %}</title>
+  <style>
+    /* Google Fonts (Outfit + JetBrains Mono) — woff2 内嵌为 base64，零外部依赖 */
+    {% include "_fonts.css" %}
+  </style>
+  <style>
+    /* ── Tokens ─────────────────────────────────────────── */
+    :root {
+      --red:        #E60012;
+      --red-hover:  #C8000F;
+      --red-light:  rgba(230,0,18,.07);
+      --red-border: rgba(230,0,18,.18);
+
+      --bg:         #F2F4F7;
+      --surface:    #FFFFFF;
+      --surface-2:  #F8F9FB;
+      --surface-3:  #EFF1F5;
+
+      --border:     #DFE2E8;
+      --border-hi:  #C8CBD4;
+
+      --text-1:     #111827;
+      --text-2:     #4B5563;
+      --text-3:     #9CA3AF;
+
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-md:  0 4px 12px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.04);
+
+      --font-ui:    'Outfit', "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --font-data:  'JetBrains Mono', "Courier New", monospace;
+
+      --sidebar-w:  248px;
+      --r:          10px;
+    }
+
+    /* ── Reset ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Scrollbar ──────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: var(--surface-3); }
+    ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 3px; }
+
+    /* ── Sidebar ────────────────────────────────────────── */
+    #sidebar {
+      position: fixed;
+      left: 0; top: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+    /* 顶部红色条 */
+    #sidebar::before {
+      content: '';
+      position: sticky;
+      top: 0;
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), #FF3344);
+      flex-shrink: 0;
+    }
+    .sidebar-header {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .sidebar-logo {
+      width: 100%;
+      max-width: 190px;
+      height: auto;
+      display: block;
+    }
+    .top-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 16px 16px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .top-brand-logo {
+      max-width: 160px;
+      max-height: 38px;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+    .top-brand-text {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--red);
+    }
+    .sidebar-subtitle {
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-3);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .sidebar-nav { padding: 12px 10px 24px; flex: 1; }
+    .sidebar-group-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      padding: 10px 8px 4px;
+    }
+    .sidebar-list { display: flex; flex-direction: column; gap: 1px; }
+    .sidebar-link {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 7px;
+      color: var(--text-2);
+      font-size: 13px;
+      line-height: 1.35;
+      transition: background .12s, color .12s;
+      position: relative;
+    }
+    .sidebar-link:hover { background: var(--surface-3); color: var(--text-1); text-decoration: none; }
+    .sidebar-link.active {
+      background: var(--red-light);
+      color: var(--red);
+      font-weight: 600;
+    }
+    .sidebar-link.active::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 3px; height: 16px;
+      background: var(--red);
+      border-radius: 0 2px 2px 0;
+    }
+    .sidebar-divider { height: 1px; background: var(--border); margin: 8px 6px; }
+    .sidebar-task-list .sidebar-link { font-size: 11.5px; }
+
+    /* ── Main ───────────────────────────────────────────── */
+    main {
+      margin-left: var(--sidebar-w);
+      padding: 36px 44px 64px;
+      animation: pg-in .4s ease both;
+    }
+    @keyframes pg-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    section[id] { scroll-margin-top: 24px; }
+
+    /* ── Page Header ────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 28px;
+      padding-bottom: 22px;
+      border-bottom: 2px solid var(--border);
+      position: relative;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 56px; height: 2px;
+      background: var(--red);
+    }
+    .page-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -.01em;
+      line-height: 1.2;
+    }
+    .page-meta {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-3);
+      font-family: var(--font-data);
+    }
+    .page-intro {
+      margin-top: 12px;
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .page-intro a {
+      color: var(--red);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--red);
+    }
+    .page-intro a:hover { border-bottom-style: solid; }
+    .page-intro strong { color: var(--text-1); font-weight: 600; }
+    .page-intro-refs {
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: var(--text-3);
+    }
+    .page-intro-refs a {
+      color: inherit;
+      border-bottom-color: var(--text-3);
+    }
+    .page-intro-refs a:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    /* ── Stats Row ──────────────────────────────────────── */
+    .stats-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      border-bottom: 3px solid var(--red);
+      padding: 16px 20px;
+      flex: 1;
+      min-width: 108px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .18s, transform .18s;
+    }
+    .stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .stat-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .stat-value {
+      font-family: var(--font-data);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--text-1);
+      margin-top: 5px;
+      line-height: 1;
+    }
+    .stat-meta {
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: var(--text-3);
+      font-family: var(--font-data);
+      line-height: 1.35;
+    }
+    /* 多子项 stat 卡片（如「模型」、「提交记录」三段式）*/
+    .stat-card-multi { flex: 2; min-width: 280px; }
+    .stat-card-multi .stat-row {
+      display: flex; gap: 18px; margin-top: 8px; align-items: flex-end;
+    }
+    .stat-sub { flex: 1; min-width: 0; }
+    .stat-sub-label {
+      font-size: 11px;
+      color: var(--text-3);
+      letter-spacing: .04em;
+      margin-bottom: 3px;
+    }
+    .stat-sub-value {
+      font-family: var(--font-data);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--text-1);
+    }
+    .stat-sub.is-filtered .stat-sub-value { color: var(--red); }
+    .stat-sub.is-valid    .stat-sub-value { color: #047857; }
+    .stat-sub-divider {
+      color: var(--text-3);
+      font-size: 18px;
+      align-self: center;
+      margin: 0 -4px;
+    }
+
+    /* ── Panel ──────────────────────────────────────────── */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .panel-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .panel-title::before {
+      content: '';
+      width: 3px; height: 15px;
+      background: var(--red);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .panel-body {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+    .panel-body code {
+      font-family: var(--font-data);
+      font-size: 12px;
+      background: var(--surface-3);
+      color: var(--red-hover);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Section Card ───────────────────────────────────── */
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      margin-top: 16px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .section-card-header {
+      padding: 18px 24px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .section-card-title { font-size: 16px; font-weight: 700; color: var(--text-1); }
+    .section-card-meta {
+      font-size: 11.5px;
+      color: var(--text-3);
+      margin-top: 3px;
+      font-family: var(--font-data);
+    }
+    /* 总排行榜：左侧加品牌红条 + 头部稍醒目背景，与各大类视觉上区分 */
+    .overall-section { border-left: 4px solid var(--red); }
+    .overall-section .section-card-header { background: linear-gradient(180deg, #FFF5F5 0%, var(--surface-2) 100%); }
+    .overall-section .section-card-title { font-size: 17px; }
+    /* 侧边栏「总排行榜」高亮——仅字体红 + 加粗，与 hover/active 态区分 */
+    .sidebar-link.sidebar-link-overall { color: var(--red); font-weight: 700; }
+    .sidebar-link.sidebar-link-overall:hover { color: var(--red); }
+    /* 打勾单元格：居中显示 ✓，未勾的格子保持空白 */
+    .check-cell { text-align: center; font-weight: 600; color: var(--text-1); }
+    .check-cell.on::before {
+      content: '';
+      display: inline-block;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      vertical-align: middle;
+    }
+
+    /* ── Bilingual content ──────────────────────────────── */
+    [data-lang="en"] { display: none; }
+    body.lang-en [data-lang="zh"] { display: none; }
+    body.lang-en [data-lang="en"] { display: revert; }
+
+    /* ── Table ──────────────────────────────────────────── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    thead th {
+      position: sticky; top: 0; z-index: 2;
+      background: var(--surface-2);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border-hi);
+      white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #FFF5F5; }
+    td { padding: 9px 14px; vertical-align: middle; }
+    td.mono     { font-family: var(--font-data); font-size: 12.5px; text-align: right; color: var(--text-2); }
+    td.mono-dim { font-family: var(--font-data); font-size: 12px;   text-align: right; color: var(--text-3); }
+
+    /* ── Rank Badge ─────────────────────────────────────── */
+    .rank-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 30px; height: 24px;
+      padding: 0 7px;
+      border-radius: 6px;
+      font-family: var(--font-data);
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--surface-3);
+      color: var(--text-3);
+      border: 1px solid var(--border);
+    }
+    .rank-1 { background: var(--red); color: #fff; border-color: var(--red); font-weight: 700; }
+    .rank-2 { background: #374151; color: #fff; border-color: #374151; font-weight: 700; }
+    .rank-3 { background: linear-gradient(135deg,#b07840,#8a5c28); color: #fff; border-color: #8a5c28; font-weight: 700; }
+
+    /* ── Success Bar ────────────────────────────────────── */
+    td.success-cell {
+      position: relative;
+      font-family: var(--font-data);
+      font-size: 13px;
+      text-align: right;
+    }
+    .bar-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      background: rgba(230,0,18,.06);
+      border-right: 2px solid rgba(230,0,18,.22);
+      pointer-events: none;
+    }
+    .bar-val { position: relative; z-index: 1; }
+
+    /* ── Sortable ───────────────────────────────────────── */
+    th.sortable { cursor: pointer; user-select: none; }
+    th.sortable:hover { background: var(--surface-3); color: var(--text-2); }
+    th.sortable.sort-asc,
+    th.sortable.sort-desc {
+      background: var(--red-light);
+      color: var(--red);
+    }
+
+    /* ── Tags（四种独立属性标签）───────────────────── */
+    .tag { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 20px; font-size: 11.5px; font-weight: 600; white-space: nowrap; }
+    /* 中国 · 开源：绿（双优属性，最醒目）*/
+    .tag-china-open    { background: rgba(16,185,129,.14); color: #047857; }
+    /* 中国 · 闭源：红（联通品牌色系，国产标志）*/
+    .tag-china-closed  { background: rgba(230,0,18,.10);   color: var(--red); }
+    /* 外国 · 开源：蓝 */
+    .tag-other-open    { background: rgba(59,130,246,.12); color: #1D4ED8; }
+    /* 外国 · 闭源：灰 */
+    .tag-other-closed  { background: var(--surface-3);     color: var(--text-2); border: 1px solid var(--border); }
+
+    /* ── Chip List ──────────────────────────────────────── */
+    .chip-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .chip {
+      font-size: 11.5px;
+      font-family: var(--font-data);
+      padding: 4px 11px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-2);
+    }
+
+    /* ── Filter Bar（嵌在 section 之间，独立组件样式）──── */
+    #filter-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-sm);
+      padding: 12px 18px;
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+    .filter-slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100px;
+      height: 4px;
+      background: var(--surface-3);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .filter-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--red);
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 0 0 1px var(--red);
+    }
+    .filter-slider::-moz-range-thumb {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--red);
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 0 0 1px var(--red);
+    }
+    .slider-val {
+      font-family: var(--font-data);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--red);
+      min-width: 22px;
+    }
+    .radio-group {
+      display: flex;
+      gap: 2px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2px;
+    }
+    .radio-group label {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: background .12s, color .12s;
+      white-space: nowrap;
+    }
+    .radio-group input[type=radio] { display: none; }
+    .radio-group input[type=radio]:checked + label {
+      background: var(--red);
+      color: white;
+    }
+    .filter-divider {
+      width: 1px;
+      height: 24px;
+      background: var(--border);
+    }
+    .lang-toggle {
+      display: inline-flex;
+      gap: 0;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04), inset 0 1px 0 rgba(255,255,255,.6);
+    }
+    .lang-toggle input[type=radio] { display: none; }
+    .lang-toggle label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 14px;
+      min-width: 36px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: background .15s, color .15s, box-shadow .15s;
+    }
+    .lang-toggle label:hover { color: var(--text-1); }
+    .lang-toggle input[type=radio]:checked + label {
+      background: var(--red);
+      color: white;
+      box-shadow: 0 1px 3px rgba(229, 30, 35, .35);
+    }
+
+    /* ── Responsive ─────────────────────────────────────── */
+    @media (max-width: 960px) {
+      #sidebar {
+        position: static; width: 100%; height: auto;
+        border-right: none; border-bottom: 1px solid var(--border);
+      }
+      .sidebar-nav { display: flex; flex-wrap: wrap; padding: 10px; }
+      .sidebar-list { flex-direction: row; flex-wrap: wrap; }
+      .sidebar-group-label { width: 100%; }
+      main { margin-left: 0; padding: 24px 18px 44px; }
+      .page-title { font-size: 22px; }
+      .stats-row { gap: 8px; }
+      .stat-value { font-size: 22px; }
+      .top-brand {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 12px 16px;
+      }
+      .top-brand-logo { max-height: 32px; }
+    }
+
+    /* ── 大类与任务 (cat-overview) section 共享样式 ──────────── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .cat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      transition: box-shadow .15s;
+    }
+    .cat-card:hover { box-shadow: var(--shadow-md); }
+    .cat-card-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 10px;
+      padding-bottom: 7px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cat-card-name a { color: var(--red); }
+    .cat-card-name a:hover { text-decoration: underline; }
+    .cat-scenario {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 4px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .cat-scenario:last-child { border-bottom: none; padding-bottom: 0; }
+    .cat-scenario-id {
+      font-family: var(--font-data);
+      font-size: 11px;
+      color: var(--text-2);
+      word-break: break-all;
+    }
+    .cat-scenario-name {
+      font-size: 12px;
+      color: var(--text-3);
+      line-height: 1.4;
+    }
+    /* 英文模式下 task_id 已经是英文，不再展示重复的 task_name_en */
+    .lang-en .cat-scenario-name { display: none; }
+    /* task_rankings 页 cat-overview 中的可点击任务（跳转到对应 task section）*/
+    .cat-scenario-link {
+      text-decoration: none;
+      color: inherit;
+      border-radius: 4px;
+      margin: 0 -4px;
+      padding-left: 4px;
+      padding-right: 4px;
+      transition: background-color .12s;
+    }
+    .cat-scenario-link:hover {
+      background-color: var(--surface-1);
+    }
+    .cat-scenario-link:hover .cat-scenario-id {
+      color: var(--red);
+    }
+
+    {% block extra_styles %}{% endblock %}
+  </style>
+</head>
+<body>
+  <nav id="sidebar" aria-label="页面导航">
+    <div class="top-brand">
+      {% if logo_src %}
+      <img class="top-brand-logo" src="{{ logo_src }}" alt="联通数智">
+      {% else %}
+      <span class="top-brand-text">联通数智</span>
+      {% endif %}
+      <div class="lang-toggle">
+        <input type="radio" name="lang" id="lang-zh" value="zh" class="filter-control"{% if filter_defaults.lang == 'zh' %} checked{% endif %}>
+        <label for="lang-zh">中文</label>
+        <input type="radio" name="lang" id="lang-en" value="en" class="filter-control"{% if filter_defaults.lang == 'en' %} checked{% endif %}>
+        <label for="lang-en">EN</label>
+      </div>
+    </div>
+    <div class="sidebar-nav">
+      {% block sidebar %}{% endblock %}
+    </div>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <script>
+  (() => {
+    /* ── Table Sorting ───────────────────────────────────── */
+    const label = h => {
+      const key = h.dataset.i18n;
+      // window.I18N 在另一 IIFE 中赋值；初始化阶段（页面加载时）可能还未赋值，fallback 到 textContent
+      const I = (typeof window !== 'undefined') ? window.I18N : null;
+      if (key && I && I[key]) {
+        const lang = document.body.classList.contains('lang-en') ? 'en' : 'zh';
+        if (I[key][lang] !== undefined) return I[key][lang];
+      }
+      if (!h.dataset.label) h.dataset.label = h.textContent.replace(/\s*[⇅↑↓]\s*$/, '').trim();
+      return h.dataset.label;
+    };
+    const mark = (h, dir) => {
+      h.textContent = label(h) + (dir === 'asc' ? ' ↑' : dir === 'desc' ? ' ↓' : ' ⇅');
+      h.classList.toggle('sort-asc',  dir === 'asc');
+      h.classList.toggle('sort-desc', dir === 'desc');
+      h.setAttribute('aria-sort', dir === 'asc' ? 'ascending' : dir === 'desc' ? 'descending' : 'none');
+      dir ? (h.dataset.sortDir = dir) : delete h.dataset.sortDir;
+    };
+    const num = t => {
+      const s = t.replace(/,/g, '').trim();
+      if (!s || s === '-') return null;
+      const v = parseFloat(s);
+      return isNaN(v) ? null : v;
+    };
+    document.querySelectorAll('th.sortable').forEach(h => {
+      mark(h, null);
+      h.addEventListener('click', () => {
+        const tbody = h.closest('table')?.tBodies[0];
+        if (!tbody) return;
+        const col = parseInt(h.dataset.colIdx || '', 10);
+        if (!Number.isInteger(col)) return;
+        const dir = h.dataset.sortDir
+          ? (h.dataset.sortDir === 'asc' ? 'desc' : 'asc')
+          : (h.dataset.defaultDir || 'desc');
+        const rows = Array.from(tbody.rows).map((r, i) => ({
+          r, i, v: num(r.cells[col]?.textContent ?? '')
+        }));
+        rows.sort((a, b) => {
+          if (a.v === null && b.v === null) return a.i - b.i;
+          if (a.v === null) return 1;
+          if (b.v === null) return -1;
+          return a.v === b.v ? a.i - b.i : dir === 'asc' ? a.v - b.v : b.v - a.v;
+        });
+        const frag = document.createDocumentFragment();
+        rows.forEach(({ r }, ri) => {
+          const badge = r.cells[0]?.querySelector('.rank-badge');
+          if (badge) {
+            badge.textContent = ri + 1;
+            badge.className = 'rank-badge' + (ri < 3 ? ' rank-' + (ri + 1) : '');
+          }
+          frag.appendChild(r);
+        });
+        tbody.appendChild(frag);
+        h.closest('table').querySelectorAll('th.sortable').forEach(th =>
+          mark(th, th === h ? dir : null)
+        );
+      });
+    });
+
+    /* ── Sidebar Scroll Spy ──────────────────────────────── */
+    const entries = Array.from(document.querySelectorAll('#sidebar a[href^="#"]'))
+      .map(a => {
+        const id = decodeURIComponent(a.getAttribute('href').slice(1));
+        const el = document.getElementById(id);
+        return el ? { a, el } : null;
+      }).filter(Boolean);
+    if (!entries.length) return;
+    const activate = id => entries.forEach(({ a, el }) => a.classList.toggle('active', el.id === id));
+    const nearest  = () => {
+      const marker = window.scrollY + 200;
+      let cur = entries[0].el.id;
+      entries.forEach(({ el }) => { if (el.offsetTop <= marker) cur = el.id; });
+      activate(cur);
+    };
+    if ('IntersectionObserver' in window) {
+      const vis = new Map();
+      const obs = new IntersectionObserver(evts => {
+        evts.forEach(e => vis.set(e.target.id, e.isIntersecting));
+        const seen = entries
+          .filter(({ el }) => vis.get(el.id))
+          .sort((a, b) => a.el.getBoundingClientRect().top - b.el.getBoundingClientRect().top);
+        seen.length ? activate(seen[0].el.id) : nearest();
+      }, { rootMargin: '-18% 0px -62% 0px', threshold: [0, .15] });
+      entries.forEach(({ el }) => { vis.set(el.id, false); obs.observe(el); });
+    } else {
+      window.addEventListener('scroll', nearest, { passive: true });
+    }
+    window.addEventListener('hashchange', () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (id) activate(id);
+    });
+    nearest();
+  })();
+  </script>
+
+  <script>
+  (() => {
+    /* ── Slider display ──────────────────────────────────────── */
+    const obsSlider = document.getElementById('filter-min-obs');
+    const obsVal    = document.getElementById('filter-min-obs-val');
+    if (obsSlider && obsVal) {
+      obsSlider.addEventListener('input', () => { obsVal.textContent = obsSlider.value; });
+    }
+
+    /* ── i18n ────────────────────────────────────────────────── */
+    const I18N = {
+      sidebar_title:        { zh: 'PinchBench-Upgraded · 排行榜',      en: 'PinchBench-Upgraded · Leaderboard' },
+      section_overview:     { zh: '概览',                      en: 'Overview' },
+      page_title_task:      { zh: '任务排行榜',                en: 'Task Rankings' },
+      page_title_cat:       { zh: '大类排行榜',                en: 'Category Rankings' },
+      filter_obs:           { zh: '运行次数阈值',              en: 'Min Runs' },
+      filter_country:       { zh: '国别',                      en: 'Country' },
+      filter_china:         { zh: '中国',                      en: 'China' },
+      filter_other:         { zh: '其他国家',                  en: 'Other' },
+      filter_all:           { zh: '不限',                      en: 'All' },
+      filter_open_label:    { zh: '开源',                      en: 'Source' },
+      filter_open:          { zh: '开源',                      en: 'Open' },
+      filter_closed:        { zh: '闭源',                      en: 'Closed' },
+      col_seq:              { zh: '#',                          en: '#' },
+      col_attr:             { zh: '属性',                      en: 'Attr.' },
+      col_rank:             { zh: '排名',                      en: 'Rank' },
+      col_model:            { zh: '模型',                      en: 'Model' },
+      col_provider:         { zh: '供应商',                    en: 'Provider' },
+      col_run_count:        { zh: '运行次数',                  en: 'Runs' },
+      col_success_rate:     { zh: '成功率 (%)',                en: 'Success (%)' },
+      col_cost:             { zh: '成本 ($)',                  en: 'Cost ($)' },
+      col_duration:         { zh: '耗时 (s)',                  en: 'Duration (s)' },
+      col_duration_min:     { zh: '耗时 (min)',                en: 'Duration (min)' },
+      col_model_size:       { zh: '参数量 (B)',                en: 'Size (B)' },
+      col_value:            { zh: '性价比 (%/USD)',            en: 'Value (%/USD)' },
+      col_time_eff:         { zh: '时效比 (%/s)',              en: 'Time Eff. (%/s)' },
+      col_time_eff_min:     { zh: '时效比 (%/min)',            en: 'Time Eff. (%/min)' },
+      col_model_name:       { zh: '模型',                      en: 'Model' },
+      tag_china_open:       { zh: '中国 · 开源',                en: 'China · Open' },
+      tag_china_closed:     { zh: '中国 · 闭源',                en: 'China · Closed' },
+      tag_other_open:       { zh: '外国 · 开源',                en: 'Other · Open' },
+      tag_other_closed:     { zh: '外国 · 闭源',                en: 'Other · Closed' },
+      col_total_subs:       { zh: '提交记录总数',                en: 'Total Submissions' },
+      col_valid_subs:       { zh: '有效记录总数',                en: 'Valid Submissions' },
+      col_canonical_extra:  { zh: '任务数量过多',              en: 'Extra Tasks' },
+      col_canonical_missing:{ zh: '任务数量过少',              en: 'Missing Tasks' },
+      col_task_time_zero:   { zh: '缺少时间统计',              en: 'Missing Time' },
+      col_cost_zero:        { zh: '缺少成本统计',              en: 'Missing Cost' },
+      section_metrics:      { zh: '指标说明',                  en: 'Metrics' },
+      section_models:       { zh: '模型列表',                  en: 'Models' },
+      section_filtered_out: { zh: '筛除模型归因',              en: 'Filtered-out Attribution' },
+      section_catoverview:  { zh: '大类与任务',                en: 'Categories & Tasks' },
+      section_overall:      { zh: '总排行榜',                  en: 'Overall Ranking' },
+      /* 新版 stat 卡片 i18n */
+      stat_benchmark:       { zh: 'PinchBench 版本',           en: 'PinchBench Version' },
+      stat_models_card:     { zh: '模型',                      en: 'Models' },
+      stat_submissions_card:{ zh: '提交记录',                  en: 'Submissions' },
+      stat_sub_official:    { zh: '官方',                      en: 'Official' },
+      stat_sub_filtered:    { zh: '筛除',                      en: 'Filtered' },
+      stat_sub_valid:       { zh: '有效',                      en: 'Valid' },
+      stat_sub_total:       { zh: '总数',                      en: 'Total' },
+      col_record_count:     { zh: '记录总数',                  en: 'Submissions' },
+      tag_open_china:       { zh: '开源 · 国产',               en: 'Open · China' },
+      tag_open:             { zh: '开源',                      en: 'Open Source' },
+      tag_china:            { zh: '国产',                      en: 'China' },
+      task_label_category:  { zh: '类别：',                    en: 'Category: ' },
+      task_label_grading:   { zh: '评分机制：',                en: 'Grading: ' },
+      task_label_models:    { zh: '个模型',                    en: ' models' },
+      cat_label_scenarios:  { zh: '个任务',                    en: ' tasks' },
+      sidebar_tasks:        { zh: '任务列表',                  en: 'Tasks' },
+      sidebar_cats:         { zh: '大类列表',                  en: 'Categories' },
+    };
+    // 挂 window 让另一 IIFE（Table Sorting）的 label() 也能访问字典
+    window.I18N = I18N;
+
+    function applyLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (I18N[key] && I18N[key][lang] !== undefined) el.textContent = I18N[key][lang];
+      });
+      document.body.classList.toggle('lang-en', lang === 'en');
+      // applyLanguage 覆盖了 sort 箭头；内联重渲染 sortable th 文字 + 当前排序方向箭头
+      // （mark 在另一 IIFE 中不可见，且 dataset.label 缓存可能是旧语言）
+      document.querySelectorAll('th.sortable').forEach(h => {
+        const key = h.dataset.i18n;
+        const text = (key && I18N[key] && I18N[key][lang] !== undefined)
+          ? I18N[key][lang]
+          : (h.dataset.label || h.textContent.replace(/\s*[⇅↑↓]\s*$/, '').trim());
+        const dir = h.dataset.sortDir;
+        h.textContent = text + (dir === 'asc' ? ' ↑' : dir === 'desc' ? ' ↓' : ' ⇅');
+      });
+    }
+
+    /* ── Filter logic ────────────────────────────────────────── */
+    function readFilters() {
+      const minObs    = parseInt(document.getElementById('filter-min-obs')?.value || '{{ filter_defaults.min_obs }}', 10);
+      const country   = document.querySelector('input[name=country]:checked')?.value || '{{ filter_defaults.country }}';
+      const openSrc   = document.querySelector('input[name=open_source]:checked')?.value || '{{ filter_defaults.open_source }}';
+      const lang      = document.querySelector('input[name=lang]:checked')?.value || '{{ filter_defaults.lang }}';
+      return { minObs, country, openSrc, lang };
+    }
+
+    function getFilteredModelKeys(models, filters) {
+      // models 已仅含 K > 0 的模型（K = 0 的全部进入 filtered_out_models，不在 models 字典里）
+      return Object.entries(models)
+        .filter(([, m]) => {
+          // ① 国别筛选
+          if (filters.country === 'china' && !m.is_china) return false;
+          if (filters.country === 'other' && m.is_china) return false;
+          // ② 开源筛选
+          if (filters.openSrc === 'open'   && !m.is_open_weight) return false;
+          if (filters.openSrc === 'closed' &&  m.is_open_weight) return false;
+          // ③ 运行次数阈值
+          if ((m.run_count || 0) < filters.minObs) return false;
+          return true;
+        })
+        .map(([k]) => k);
+    }
+
+    /* ── Ranking (mirrors sort_ranking_rows) ─────────────────── */
+    function rankRows(rows) {
+      const sorted = [...rows].sort((a, b) => {
+        const sr = (b.success_rate ?? -Infinity) - (a.success_rate ?? -Infinity);
+        if (sr !== 0) return sr;
+        const vs = (b.value_score ?? -Infinity) - (a.value_score ?? -Infinity);
+        if (vs !== 0) return vs;
+        const dur = (a.duration ?? Infinity) - (b.duration ?? Infinity);
+        if (dur !== 0) return dur;
+        return (a.provider + a.model).localeCompare(b.provider + b.model);
+      });
+      return sorted;
+    }
+
+    /* ── Model size display ──────────────────────────────────── */
+    function fmtSize(raw) {
+      if (!raw) return '-';
+      const s = String(raw).trim();
+      const c = s.match(/^(\d+(?:\.\d+)?)b-(a\d+(?:\.\d+)?)b$/i);
+      if (c) return `${c[1]}-${c[2]}`;
+      if (/^\d+(?:\.\d+)?b$/i.test(s)) return s.slice(0, -1);
+      return s;
+    }
+
+    function fmt(v, d) {
+      if (v === null || v === undefined) return '-';
+      return Number(v).toFixed(d);
+    }
+
+    /* ── Table rendering ─────────────────────────────────────── */
+    function buildTaskTableRows(taskData, filteredKeys, models, lang) {
+      const rowData = filteredKeys
+        .map(key => {
+          const r = taskData.results[key];
+          if (!r) return null;
+          const m = models[key];
+          return { key, model: m.name, provider: m.provider,
+                   model_size_raw: m.model_size_raw,
+                   success_rate: r.success_rate, run_count: r.run_count,
+                   cost: r.cost, duration: r.duration,
+                   value_score: r.value_score, time_efficiency: r.time_efficiency };
+        })
+        .filter(Boolean);
+
+      const sorted = rankRows(rowData);
+      let html = '';
+      sorted.forEach((r, i) => {
+        const rank = i + 1;
+        const badge = `<span class="rank-badge${rank <= 3 ? ' rank-' + rank : ''}">${rank}</span>`;
+        const barW = r.success_rate !== null ? r.success_rate : 0;
+        html += `<tr>
+          <td>${badge}</td>
+          <td style="font-size:13px;font-weight:500">${r.model}</td>
+          <td style="font-size:12px;color:var(--text-3)">${r.provider}</td>
+          <td class="mono-dim">${r.run_count}</td>
+          <td class="mono">${fmtSize(r.model_size_raw)}</td>
+          <td class="success-cell">
+            <div class="bar-fill" style="width:${barW}%"></div>
+            <span class="bar-val">${fmt(r.success_rate, 2)}</span>
+          </td>
+          <td class="mono">${fmt(r.cost, 4)}</td>
+          <td class="mono">${fmt(r.duration, 2)}</td>
+          <td class="mono">${fmt(r.value_score, 2)}</td>
+          <td class="mono">${fmt(r.time_efficiency, 2)}</td>
+        </tr>`;
+      });
+      return { html, count: sorted.length };
+    }
+
+    function buildCatTableRows(catData, tasks, filteredKeys, models) {
+      const rowData = filteredKeys.map(key => {
+        const m = models[key];
+        const vals = { success: [], cost: [], duration: [], run_counts: [] };
+        catData.task_ids.forEach(tid => {
+          const t = tasks[tid];
+          if (!t) return;
+          const r = t.results[key];
+          if (!r) return;
+          if (r.success_rate !== null && r.success_rate !== undefined) vals.success.push(r.success_rate);
+          if (r.cost !== null && r.cost !== undefined) vals.cost.push(r.cost);
+          if (r.duration !== null && r.duration !== undefined) vals.duration.push(r.duration);
+          vals.run_counts.push(r.run_count || 0);
+        });
+        if (vals.run_counts.length === 0) return null;
+        const avg = arr => arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null;
+        const sum = arr => arr.length ? arr.reduce((a, b) => a + b, 0) : null;
+        const success_rate = avg(vals.success);
+        // 大类 cost = task_cost × T = Σ(各 task 的 task_cost)
+        // 大类 duration = Σ(各 task 的 duration_s) / 60（单位分钟，与后端 avg_duration_min 一致）
+        // 大类 time_efficiency = success_rate / duration_min（单位 %/min，与后端一致）
+        const cost          = sum(vals.cost);
+        const duration_sum  = sum(vals.duration);
+        const duration      = duration_sum !== null ? duration_sum / 60 : null;
+        const run_count     = Math.min(...vals.run_counts);
+        const value_score   = (success_rate !== null && cost && cost > 0)
+          ? success_rate / cost : null;
+        const time_efficiency = (success_rate !== null && duration && duration > 0)
+          ? success_rate / duration : null;
+        return { key, model: m.name, provider: m.provider, model_size_raw: m.model_size_raw,
+                 success_rate, cost, duration, run_count, value_score, time_efficiency };
+      }).filter(Boolean);
+
+      const sorted = rankRows(rowData);
+      let html = '';
+      sorted.forEach((r, i) => {
+        const rank = i + 1;
+        const badge = `<span class="rank-badge${rank <= 3 ? ' rank-' + rank : ''}">${rank}</span>`;
+        const barW = r.success_rate !== null ? r.success_rate : 0;
+        html += `<tr>
+          <td>${badge}</td>
+          <td style="font-size:13px;font-weight:500">${r.model}</td>
+          <td style="font-size:12px;color:var(--text-3)">${r.provider}</td>
+          <td class="mono-dim">${r.run_count}</td>
+          <td class="mono">${fmtSize(r.model_size_raw)}</td>
+          <td class="success-cell">
+            <div class="bar-fill" style="width:${barW}%"></div>
+            <span class="bar-val">${fmt(r.success_rate, 2)}</span>
+          </td>
+          <td class="mono">${fmt(r.cost, 4)}</td>
+          <td class="mono">${r.duration !== null && r.duration !== undefined ? fmt(r.duration, 2) : '-'}</td>
+          <td class="mono">${fmt(r.value_score, 2)}</td>
+          <td class="mono">${r.time_efficiency !== null && r.time_efficiency !== undefined ? fmt(r.time_efficiency, 2) : '-'}</td>
+        </tr>`;
+      });
+      return { html, count: sorted.length };
+    }
+
+    /* ── Stats cards update ──────────────────────────────────── */
+    /* 顶部 3 张卡片全部静态化（基准版本 / 模型 / 提交记录），
+       不随观测次数 / 国别 / 开源筛选变化。表格自身仍按筛选动态刷新。 */
+    function updateStatsCards(/* unused, kept for backward compat */) {}
+
+    /* ── Model list panel update ─────────────────────────────── */
+    function updateModelList(filteredKeys, models, lang) {
+      const sec = document.getElementById('models');
+      if (!sec) return;
+      const tbody = sec.querySelector('tbody');
+      if (!tbody) return;
+      const sorted = filteredKeys.slice().sort((a, b) => {
+        const ma = models[a], mb = models[b];
+        return (ma.provider + ma.name).localeCompare(mb.provider + mb.name);
+      });
+      let html = '';
+      sorted.forEach((key, idx) => {
+        const m = models[key];
+        // 4 种组合标签（中国/外国 × 开源/闭源）
+        let tagClass, tagKey;
+        if (m.is_china && m.is_open_weight)         { tagClass = 'tag-china-open';   tagKey = 'tag_china_open'; }
+        else if (m.is_china && !m.is_open_weight)   { tagClass = 'tag-china-closed'; tagKey = 'tag_china_closed'; }
+        else if (!m.is_china && m.is_open_weight)   { tagClass = 'tag-other-open';   tagKey = 'tag_other_open'; }
+        else                                        { tagClass = 'tag-other-closed'; tagKey = 'tag_other_closed'; }
+        const tagText = I18N[tagKey][lang];
+        const tag = `<span class="tag ${tagClass}">${tagText}</span>`;
+        const totalSubs = (m.total_submission_count !== undefined && m.total_submission_count !== null) ? m.total_submission_count : '';
+        const validSubs = (m.run_count !== undefined && m.run_count !== null) ? m.run_count : '';
+        html += `<tr>
+          <td style="color:var(--text-3);font-size:12px;text-align:right;width:32px">${idx + 1}</td>
+          <td style="color:var(--text-2);font-size:13px">${m.provider}</td>
+          <td style="font-size:13px;font-family:var(--font-data)">${m.name}</td>
+          <td>${tag}</td>
+          <td class="mono-dim" style="text-align:right">${totalSubs}</td>
+          <td class="mono-dim" style="text-align:right">${validSubs}</td>
+        </tr>`;
+      });
+      tbody.innerHTML = html;
+      const desc = sec.querySelector('.panel-body');
+      if (desc) {
+        desc.textContent = lang === 'en'
+          ? `Sorted by "provider / model", ${sorted.length} selected models.`
+          : `按"供应商 / 模型"排序，共 ${sorted.length} 个已选模型。`;
+      }
+    }
+
+    /* ── Main applyFilters ───────────────────────────────────── */
+    function applyFilters() {
+      const dataEl = document.getElementById('ranking-data');
+      if (!dataEl) return;
+      const DATA = JSON.parse(dataEl.textContent);
+      const filters = readFilters();
+
+      applyLanguage(filters.lang);
+
+      const filteredKeys = getFilteredModelKeys(DATA.models, filters);
+
+      /* ── task_rankings page ── */
+      if (DATA.tasks && !DATA.categories) {
+        Object.entries(DATA.tasks).forEach(([tid, taskData]) => {
+          const sec = document.querySelector(`section[data-task-id="${tid}"]`);
+          if (!sec) return;
+          const tbody = sec.querySelector('tbody');
+          if (!tbody) return;
+          const { html, count } = buildTaskTableRows(taskData, filteredKeys, DATA.models, filters.lang);
+          tbody.innerHTML = html;
+          const metaEl = sec.querySelector('.section-card-meta');
+          if (metaEl) {
+            const catTxt  = filters.lang === 'en'
+              ? (I18N.task_label_category.en + (taskData.category || ''))
+              : (I18N.task_label_category.zh + (taskData.category_zh || taskData.category || ''));
+            const gradTxt = filters.lang === 'en'
+              ? (I18N.task_label_grading.en + (taskData.grading_type || ''))
+              : (I18N.task_label_grading.zh + (taskData.grading_type || ''));
+            const cntTxt  = filters.lang === 'en'
+              ? (count + I18N.task_label_models.en)
+              : (count + I18N.task_label_models.zh);
+            metaEl.textContent = catTxt + ' · ' + gradTxt + ' · ' + cntTxt;
+          }
+          const titleEl = sec.querySelector('.section-card-title');
+          if (titleEl) {
+            if (filters.lang === 'en') {
+              // 英文模式只显示 task_id（避免 task_id 与 task_name 重复）
+              titleEl.textContent = tid;
+            } else {
+              const zhPart = taskData.name_zh || taskData.name_en || '';
+              titleEl.textContent = tid + ' · ' + zhPart;
+            }
+          }
+        });
+        updateModelList(filteredKeys, DATA.models, filters.lang);
+        // ranking 卡片 = 进入排行榜的模型数（与 selected 一致），不是跨任务表的总行数
+        updateStatsCards(filteredKeys, DATA.filtered_out_count || 0);
+      }
+
+      /* ── category_rankings page ── */
+      if (DATA.categories) {
+        Object.entries(DATA.categories).forEach(([catKey, catData]) => {
+          const sec = document.querySelector(`section[data-cat-key="${CSS.escape(catKey)}"]`);
+          if (!sec) return;
+          const tbody = sec.querySelector('tbody');
+          if (!tbody) return;
+          const { html, count } = buildCatTableRows(catData, DATA.tasks, filteredKeys, DATA.models);
+          tbody.innerHTML = html;
+          const titleEl = sec.querySelector('.section-card-title');
+          if (titleEl) {
+            titleEl.textContent = filters.lang === 'en' ? catData.name_en : catData.name_zh;
+          }
+          const metaEl = sec.querySelector('.section-card-meta');
+          if (metaEl) {
+            const scenTxt = filters.lang === 'en'
+              ? (catData.task_ids.length + I18N.cat_label_scenarios.en)
+              : (catData.task_ids.length + I18N.cat_label_scenarios.zh);
+            const cntTxt = filters.lang === 'en'
+              ? (count + I18N.task_label_models.en)
+              : (count + I18N.task_label_models.zh);
+            metaEl.textContent = scenTxt + ' · ' + cntTxt;
+          }
+        });
+        updateModelList(filteredKeys, DATA.models, filters.lang);
+        updateStatsCards(filteredKeys, DATA.filtered_out_count || 0);
+      }
+    }
+
+    /* ── Event listeners ─────────────────────────────────────── */
+    if (document.getElementById('ranking-data')) {
+      document.querySelectorAll('.filter-control').forEach(el => {
+        el.addEventListener('change', applyFilters);
+      });
+      if (obsSlider) {
+        obsSlider.addEventListener('input', applyFilters);
+      }
+    }
+  })();
+  </script>
+</body>
+</html>

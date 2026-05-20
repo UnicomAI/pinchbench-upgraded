@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=45"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pinchbench-upgraded"
+version = "4.0.0"
+description = "PinchBench-Upgraded: re-aggregate PinchBench leaderboard data via submission-level binary validity, with bilingual HTML reports."
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27",
+    "jinja2>=3.1",
+    "tenacity>=8.3",
+]
+
+[project.scripts]
+pinchbench-upgraded = "pinchbench_upgraded.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pinchbench_upgraded = ["html/templates/*.html"]

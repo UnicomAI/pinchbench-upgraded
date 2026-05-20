@@ -1,0 +1,2415 @@
+[
+  {
+    "model": "anthropic/claude-opus-4.7",
+    "model_prefix": "anthropic/",
+    "provider": "openrouter",
+    "leaderboard_rank": 1,
+    "best_score_percentage": 91.58,
+    "leaderboard_submission_count": 14,
+    "submissions_total": 14,
+    "returned_submission_count": 14,
+    "latest_submission": "2026-05-14T19:22:26Z",
+    "best_submission_id": "108a1d0e-53e6-47b9-9b9b-23d574fa7230",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "108a1d0e-53e6-47b9-9b9b-23d574fa7230",
+      "10b42104-500b-48e4-8b9b-2d2d985f013d",
+      "fd2878b4-9a51-4d2b-a781-00d420a5f5ed",
+      "e68af5f9-c81d-4f46-8c88-19d5bf697119",
+      "6a9c90c9-ea17-4aeb-8d85-6fe5d274cbdc"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "fded6224-2f33-45d2-9af3-ff8aeb428bc7",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "cce0ef70-9aff-477e-bb3b-90120b02f7e1",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "xiaomi/mimo-v2.5",
+    "model_prefix": "xiaomi/",
+    "provider": "openrouter",
+    "leaderboard_rank": 2,
+    "best_score_percentage": 91.42,
+    "leaderboard_submission_count": 5,
+    "submissions_total": 5,
+    "returned_submission_count": 5,
+    "latest_submission": "2026-05-14T18:30:14Z",
+    "best_submission_id": "55311770-b43a-4085-8d50-3d0fc9f6c2ac",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5",
+    "model_size_raw": "310b-a15b",
+    "model_size_b": 310.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "55311770-b43a-4085-8d50-3d0fc9f6c2ac",
+      "fdbbf0eb-d5d1-472c-bf11-a1aa955aff47",
+      "f40e184e-7558-4bc6-815d-cf5143b735c6",
+      "97667c37-dfda-43c3-b112-9f8db917d109",
+      "0e5b69cc-c3c7-41b1-a7aa-920564edc630"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "anthropic/claude-haiku-4.5",
+    "model_prefix": "anthropic/",
+    "provider": "openrouter",
+    "leaderboard_rank": 3,
+    "best_score_percentage": 90.4,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-14T18:52:49Z",
+    "best_submission_id": "fdb70e8d-240c-4642-a32e-a9fc09dee6fb",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "fdb70e8d-240c-4642-a32e-a9fc09dee6fb",
+      "d41d6e77-d0cb-46e3-94ee-c35490420675",
+      "5d72c0f2-1d6a-4923-8d62-07e206c76a54",
+      "05302ea3-f52b-407d-ae11-dfb98d0dfe92",
+      "a3d0ecd2-cbe2-4d99-af6f-9f1250c5ed6b",
+      "400659d2-9184-4f2f-90d6-9c18ccbb5344",
+      "a6cd052b-be21-4860-9ed7-4382957d2ca3"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "b467ef4b-36c9-44a6-9289-65d19236369d",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "dc209ef6-a148-4668-87b7-940611d9b812",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "xiaomi/mimo-v2.5-pro",
+    "model_prefix": "xiaomi/",
+    "provider": "openrouter",
+    "leaderboard_rank": 4,
+    "best_score_percentage": 89.52,
+    "leaderboard_submission_count": 5,
+    "submissions_total": 5,
+    "returned_submission_count": 5,
+    "latest_submission": "2026-05-08T19:42:39Z",
+    "best_submission_id": "70e03ece-4b15-4c93-82d2-abab864d5865",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro",
+    "model_size_raw": "1044b-a42b",
+    "model_size_b": 1044.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "70e03ece-4b15-4c93-82d2-abab864d5865",
+      "87439bfb-78ea-467d-bc6b-56a970c116f2",
+      "a23ff0b9-2487-4c27-9b88-5061bba33d60",
+      "cacd20c0-7a67-44ff-9e7a-5770f907bbe8",
+      "05f88286-a094-4f16-99c2-d5f9dd274eb0"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "deepseek/deepseek-v4-flash",
+    "model_prefix": "deepseek/",
+    "provider": "openrouter",
+    "leaderboard_rank": 5,
+    "best_score_percentage": 89.52,
+    "leaderboard_submission_count": 6,
+    "submissions_total": 6,
+    "returned_submission_count": 6,
+    "latest_submission": "2026-05-14T19:14:12Z",
+    "best_submission_id": "b67cf3cb-81bb-4bd3-83ed-359ff9bc6a5c",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "model_size_raw": "284b-a13b",
+    "model_size_b": 284.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "b67cf3cb-81bb-4bd3-83ed-359ff9bc6a5c",
+      "5b3594e7-b6d2-4d4d-b963-a02c2578ae28",
+      "257dbeec-8302-479f-a433-ee3ba408edae",
+      "05acf673-4dfe-4591-9da7-52b706cc30f7",
+      "97475fb6-7346-4441-a1b2-6f6e13bf9527",
+      "df9036eb-5a8b-42eb-86b6-9366009b1b57"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "openai/gpt-5.5",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 6,
+    "best_score_percentage": 88.96,
+    "leaderboard_submission_count": 15,
+    "submissions_total": 15,
+    "returned_submission_count": 15,
+    "latest_submission": "2026-05-08T19:26:16Z",
+    "best_submission_id": "c7c6b2f4-698e-4420-a31f-683d4f9f59b4",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "c7c6b2f4-698e-4420-a31f-683d4f9f59b4",
+      "48605047-1b2a-4d69-abfe-5144bf52bd7b",
+      "f18bd327-71ca-470a-89ed-683f9ca27972",
+      "b828698f-4896-426d-9913-cc04f55724d2",
+      "b9a3af7e-2d9c-4475-9398-1977984582db"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "c637effa-a388-4d9c-9c98-7bdefdfb1674",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "68d969b3-8a4a-4fc4-a75f-e4c0cd802896",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "anthropic/claude-opus-4.6",
+    "model_prefix": "anthropic/",
+    "provider": "openrouter",
+    "leaderboard_rank": 7,
+    "best_score_percentage": 88.89,
+    "leaderboard_submission_count": 18,
+    "submissions_total": 18,
+    "returned_submission_count": 18,
+    "latest_submission": "2026-05-14T20:17:47Z",
+    "best_submission_id": "9ba6b3f5-6b7f-4a72-977a-4bf77a6ed35c",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "9ba6b3f5-6b7f-4a72-977a-4bf77a6ed35c",
+      "02e58054-602d-4368-bd96-f3e246f545f4",
+      "4c3941fb-3f3b-4240-a7db-3af2f68c907f",
+      "7d84ebd9-57ba-4ce8-8251-2daef65ea208",
+      "7c53b0b5-95b2-4dd6-b6d1-32d62578f551",
+      "ed7916e4-462f-4bbc-ba3c-3b7e5d7f8ded",
+      "23ec450b-a8a9-424e-967a-484d1dbc500c"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 11,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "62baaced-c010-41a9-941b-dad56bf8f169",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "a67be4da-498f-4bcf-90b1-6f3adb4ca1fb",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "openai/gpt-5.4",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 8,
+    "best_score_percentage": 88.39,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-14T18:53:02Z",
+    "best_submission_id": "e49539a0-07d1-4d8c-80af-cc4b28226070",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "e49539a0-07d1-4d8c-80af-cc4b28226070",
+      "c6c04566-c3c9-434d-8845-dccebf32df03",
+      "cd455a74-dfe8-44f7-bee1-ddaaa5df754c",
+      "f7d1f0c2-1db7-4fab-86a9-58272ae87a34",
+      "5a6ce430-4aec-4daf-8f7f-3e5cd1248cc2",
+      "1b38fa09-76cb-4b6e-9fee-233e18d463f1"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "8d74d718-4e77-4f9a-aac4-fbe59bbd35dc",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "e843beab-faba-49f7-8822-abf69c7b638f",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "z-ai/glm-5-turbo",
+    "model_prefix": "z-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 9,
+    "best_score_percentage": 88.2,
+    "leaderboard_submission_count": 17,
+    "submissions_total": 17,
+    "returned_submission_count": 17,
+    "latest_submission": "2026-05-14T19:57:10Z",
+    "best_submission_id": "ce07ebb2-173b-4fc7-87d9-698a61555cc6",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/zai-org/GLM-5-Turbo",
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "ce07ebb2-173b-4fc7-87d9-698a61555cc6",
+      "d5d6af3b-479d-4eff-b67d-31594b09fb0d",
+      "13e3a818-5965-4970-8c10-42cf33e345b6",
+      "9dbafcfd-c3cc-487a-ab70-2b2570434dbd",
+      "7c71d992-3259-4bc3-a70b-729772c313b8",
+      "06c2e625-df02-4fc5-9304-71f23b22852b",
+      "72891f6b-6465-4915-9095-1a2b31f476bf"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "0d9d0746-92d9-44d1-8e9e-d4a54285788f",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "f6c88d32-9558-4259-a8bc-536e329f6e7b",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "z-ai/glm-5v-turbo",
+    "model_prefix": "z-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 10,
+    "best_score_percentage": 86.6,
+    "leaderboard_submission_count": 15,
+    "submissions_total": 15,
+    "returned_submission_count": 15,
+    "latest_submission": "2026-05-14T20:16:55Z",
+    "best_submission_id": "b3036e95-800a-4d59-a424-b909f56faac6",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "b3036e95-800a-4d59-a424-b909f56faac6",
+      "5d9084dd-bce6-4c4f-b804-5f5484c888eb",
+      "1cbbe151-4036-42b9-985e-d9204fba18ab",
+      "be46fdd9-6416-45b9-b419-eb088acfc81c",
+      "6ece26c7-20eb-4888-b760-bea9ba1c6064",
+      "cf5ed842-b33d-4b36-9066-15d0ae04ba99"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "10902366-c584-46b8-aa9f-8e85a7f0e412",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "95baf4ec-d379-4f7d-9cce-8b151b77687f",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "openai/gpt-5.4-mini",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 11,
+    "best_score_percentage": 86.4,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-14T17:29:35Z",
+    "best_submission_id": "dab1c29b-b29d-4813-a5bf-29df916e3c15",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "dab1c29b-b29d-4813-a5bf-29df916e3c15",
+      "55543404-d6ef-4af2-a93b-b19c72b7e3e0",
+      "a42711fb-660e-4aee-ab12-1072d8709495",
+      "3296690b-297d-4a1b-98f7-37e240904d55",
+      "4fea783b-91fa-425f-9d2f-407602bf70ea",
+      "e44347f9-1bcb-4f1c-a8b6-07240a7b74f4",
+      "5d7a55e5-3e41-4c32-a81e-1a377e41b7c8"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "0f5ba828-5bf6-4e7a-8551-8cdecae6c9db",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "8392ff65-49a2-4dbd-a0be-e2863a71fe79",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "bytedance-seed/seed-2.0-lite",
+    "model_prefix": "bytedance-seed/",
+    "provider": "openrouter",
+    "leaderboard_rank": 12,
+    "best_score_percentage": 86.22,
+    "leaderboard_submission_count": 18,
+    "submissions_total": 18,
+    "returned_submission_count": 18,
+    "latest_submission": "2026-05-08T19:15:45Z",
+    "best_submission_id": "adb6be8d-71aa-4259-9be2-e89db8733630",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "adb6be8d-71aa-4259-9be2-e89db8733630",
+      "6336c317-ce61-4e6d-9dec-10b03d2bfa39",
+      "2af9a95c-2fe8-4815-9565-31320e98492f",
+      "a30f978c-ffa0-43ed-8212-9e05aee76f24",
+      "65cc309d-7174-44bb-8885-90f3a99adcef",
+      "b1ca0989-d2f9-4f54-b295-a947b0763b5b"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 12,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "0b5f6ef7-0a62-4354-b81a-307301810ccb",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "1a6ac776-5a07-4e51-90b6-893784646564",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "stepfun/step-3.5-flash",
+    "model_prefix": "stepfun/",
+    "provider": "openrouter",
+    "leaderboard_rank": 13,
+    "best_score_percentage": 84.73,
+    "leaderboard_submission_count": 11,
+    "submissions_total": 11,
+    "returned_submission_count": 11,
+    "latest_submission": "2026-05-08T19:57:12Z",
+    "best_submission_id": "12ff5726-7126-4443-b8da-c4f0a2d65a0d",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/stepfun-ai/Step-3.5-Flash",
+    "model_size_raw": "196b-a11b",
+    "model_size_b": 196.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "12ff5726-7126-4443-b8da-c4f0a2d65a0d",
+      "b089fc4a-61f8-4d87-b7b2-a7782ab4de20",
+      "dbabe09f-1832-472d-b955-0acae4ffe555",
+      "c9d77c59-62ef-4048-bd0e-a9b83aacdd81",
+      "d16d8ad1-430f-435f-877f-9d3e9d685368"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 6,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "2b508dcf-45d8-4122-bc33-b00e68cfb7c1",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "6223de3b-cc6d-4972-aa89-0319d00b7c18",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "x-ai/grok-4.20",
+    "model_prefix": "x-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 14,
+    "best_score_percentage": 84.59,
+    "leaderboard_submission_count": 12,
+    "submissions_total": 12,
+    "returned_submission_count": 12,
+    "latest_submission": "2026-05-08T18:17:34Z",
+    "best_submission_id": "ac9ef8e3-4fd9-4b49-b1bd-d8a8e4bfc52a",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "4ed238ba-4467-4b72-8ceb-211b6a78ee51",
+      "9c223f1d-e209-4ef5-b363-0e869d87731c",
+      "9ca70596-a5e8-4d49-a184-5545774a5ff5",
+      "174c3d9e-2384-4db8-8407-76fae73582f5",
+      "c6e20eff-64f3-43c9-9a60-7f84a4c56505"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 7,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "ac9ef8e3-4fd9-4b49-b1bd-d8a8e4bfc52a",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "4028a2ed-aabf-4dc8-bbbf-235f98e62ffb",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "anthropic/claude-sonnet-4.6",
+    "model_prefix": "anthropic/",
+    "provider": "openrouter",
+    "leaderboard_rank": 15,
+    "best_score_percentage": 84.58,
+    "leaderboard_submission_count": 18,
+    "submissions_total": 18,
+    "returned_submission_count": 18,
+    "latest_submission": "2026-05-14T20:04:16Z",
+    "best_submission_id": "d758affb-b3e5-4c03-972c-3178106fcf77",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "d758affb-b3e5-4c03-972c-3178106fcf77",
+      "aab6c05f-2629-4963-a900-3f4fde6e18c8",
+      "1cfd8243-55e9-4147-b609-2a012cdd1e45",
+      "d6863bf6-846d-430b-80b6-983b9bbff4fa",
+      "136b869c-1eda-45a0-b82f-c11b9f32d87f",
+      "a28bc377-aba8-4faf-893f-53442fac90f3",
+      "df29e523-83af-46bb-a3e2-933648ea6cd8"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 11,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "14599222-fd4f-45a5-a123-305a812213dc",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "f9fdc11f-f57b-4c28-90ae-0433993ce4fd",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "qwen/qwen3.6-plus",
+    "model_prefix": "qwen/",
+    "provider": "openrouter",
+    "leaderboard_rank": 16,
+    "best_score_percentage": 84.44,
+    "leaderboard_submission_count": 14,
+    "submissions_total": 14,
+    "returned_submission_count": 14,
+    "latest_submission": "2026-05-08T20:22:38Z",
+    "best_submission_id": "8f3445ac-0fd6-4004-9c66-1b3fbd410297",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "8f3445ac-0fd6-4004-9c66-1b3fbd410297",
+      "dfd8d3f7-6a5d-4dd0-9d10-cbf6db9edae0",
+      "4477fa69-359e-4ae9-8d88-467b8f673f89",
+      "825b5dc1-7fa1-4924-ad3e-704b4b5e50eb",
+      "7a129a87-7481-4162-b63a-116931d11124"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "4b8ec8c5-2616-4a4b-a87f-a2537f5a85ba",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "1cc85298-1132-453d-9dc9-6220ee9d3b11",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "mistralai/devstral-2512",
+    "model_prefix": "mistralai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 17,
+    "best_score_percentage": 83.22,
+    "leaderboard_submission_count": 15,
+    "submissions_total": 15,
+    "returned_submission_count": 15,
+    "latest_submission": "2026-05-14T19:26:00Z",
+    "best_submission_id": "963797d3-3c8d-4150-a729-fca7547383ae",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512",
+    "model_size_raw": "123b",
+    "model_size_b": 123.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "963797d3-3c8d-4150-a729-fca7547383ae",
+      "996d733b-121e-4111-82f5-e48a0a0d912b",
+      "10d080b7-c226-4a54-8b4f-6f997b92707a",
+      "4bfdb789-fbcd-41a8-be03-18162063e172",
+      "05916887-4f56-48dd-a828-a1a8abbed603",
+      "2ca828cf-9f92-4988-ae26-537192d2b068"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "405581d1-8df0-4d95-9f24-6c2cb8eeaf42",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "eac6ee9f-fc50-4896-a7df-8b0e8913b0f7",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "x-ai/grok-4.3",
+    "model_prefix": "x-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 18,
+    "best_score_percentage": 83.06,
+    "leaderboard_submission_count": 10,
+    "submissions_total": 10,
+    "returned_submission_count": 10,
+    "latest_submission": "2026-05-14T18:12:49Z",
+    "best_submission_id": "b03da17e-2214-400a-9dae-2d8adde7627f",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "b03da17e-2214-400a-9dae-2d8adde7627f",
+      "817ecf77-18e4-4fa9-87ec-cf33aff85202",
+      "90ffbfff-bb4d-4d56-85fd-bacbca4ac11b",
+      "61dec117-357d-4c62-8738-577283f3c862",
+      "e562dd35-6818-4198-8697-be55df162aed",
+      "88dae4eb-694a-4abc-a5f4-1a39553778b7",
+      "746be5c3-eb6a-495e-b349-b6293e7e55c7"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 3,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "a348c382-c3c1-4c2c-9ec3-53fe2d26a9c9",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "8b98e8cb-22b3-41af-b537-b9cf4d18ed18",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "google/gemini-3.1-pro-preview",
+    "model_prefix": "google/",
+    "provider": "openrouter",
+    "leaderboard_rank": 19,
+    "best_score_percentage": 82.94,
+    "leaderboard_submission_count": 9,
+    "submissions_total": 9,
+    "returned_submission_count": 9,
+    "latest_submission": "2026-05-08T18:32:57Z",
+    "best_submission_id": "9f59b9f3-3685-4087-b007-20aec32403eb",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "9f59b9f3-3685-4087-b007-20aec32403eb",
+      "aa1872be-f933-4bb0-a593-9699f506cfcf",
+      "b76a57c8-ce05-4897-bd20-ff2fa3e31683",
+      "c1844bfa-c188-4519-b5c5-3b2eda1f0602",
+      "6445df01-e513-442e-8f45-169c51cd3764"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 4,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "ed84ed71-4799-4a44-93d8-42d2ba063513",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "f58cd5df-6289-428a-a387-a92efe8ffcb9",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "inclusionai/ling-2.6-1t",
+    "model_prefix": "inclusionai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 20,
+    "best_score_percentage": 82.64,
+    "leaderboard_submission_count": 1,
+    "submissions_total": 1,
+    "returned_submission_count": 1,
+    "latest_submission": "2026-05-11T19:24:15Z",
+    "best_submission_id": "f507eafa-9aaf-4e4c-a12d-a52721238619",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": "1024b-a63b",
+    "model_size_b": 1024.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 1,
+    "valid_submission_ids": [
+      "f507eafa-9aaf-4e4c-a12d-a52721238619"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "google/gemini-3.1-flash-lite",
+    "model_prefix": "google/",
+    "provider": "openrouter",
+    "leaderboard_rank": 21,
+    "best_score_percentage": 80.5,
+    "leaderboard_submission_count": 1,
+    "submissions_total": 1,
+    "returned_submission_count": 1,
+    "latest_submission": "2026-05-07T18:43:10Z",
+    "best_submission_id": "278d3c9c-377a-485d-972c-52f646e67a7c",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 1,
+    "valid_submission_ids": [
+      "278d3c9c-377a-485d-972c-52f646e67a7c"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "moonshotai/kimi-k2.5",
+    "model_prefix": "moonshotai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 22,
+    "best_score_percentage": 79.42,
+    "leaderboard_submission_count": 12,
+    "submissions_total": 12,
+    "returned_submission_count": 12,
+    "latest_submission": "2026-05-08T21:10:49Z",
+    "best_submission_id": "d52a9632-bf24-4e20-a194-6adc4dcf1869",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/moonshotai/Kimi-K2.5",
+    "model_size_raw": "1024b-a32b",
+    "model_size_b": 1024.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "d52a9632-bf24-4e20-a194-6adc4dcf1869",
+      "67a8b22f-afe8-48e2-93fc-6ad91c30bf58",
+      "f960772a-f0fa-4992-8a44-0d89f4462b80",
+      "e2b894e0-bcbb-4ea7-80f7-2bc25616ddfa",
+      "3fd6a62c-9b41-4cd5-8499-4afbf2538056"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 7,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "f87d65e8-48e3-48f2-b1a3-a8bfbc6a8bb7",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "96169bd1-4b9f-4984-9e57-eb32791d2926",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "google/gemini-3-flash-preview",
+    "model_prefix": "google/",
+    "provider": "openrouter",
+    "leaderboard_rank": 23,
+    "best_score_percentage": 79.32,
+    "leaderboard_submission_count": 17,
+    "submissions_total": 17,
+    "returned_submission_count": 17,
+    "latest_submission": "2026-05-14T17:10:05Z",
+    "best_submission_id": "23dea779-3992-47aa-9166-576f59b8d359",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "63970252-d670-4fbf-bfff-72e7768d8a26",
+      "cfe4f2fe-496c-49e2-b5de-14eae06c7f67",
+      "9828ddd1-7f60-4ca9-8c33-ea5b71fe1501",
+      "21dc35ac-c4d7-4ebd-81ee-a34d18690353",
+      "c052fc1f-a564-4232-a259-a0ab8002e273",
+      "3743ed19-9a78-4673-98fb-7632aa9105d4"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 11,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "23dea779-3992-47aa-9166-576f59b8d359",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "8c8e0dcf-9004-4c97-aa34-2aec84344eed",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "mistralai/mistral-small-2603",
+    "model_prefix": "mistralai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 24,
+    "best_score_percentage": 78.1,
+    "leaderboard_submission_count": 15,
+    "submissions_total": 15,
+    "returned_submission_count": 15,
+    "latest_submission": "2026-05-08T19:35:05Z",
+    "best_submission_id": "34c905b9-fb02-463c-8e01-a207df626321",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": "119b-a6.5b",
+    "model_size_b": 119.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "34c905b9-fb02-463c-8e01-a207df626321",
+      "ba46e299-ad67-400a-b59b-4a60868a6c47",
+      "ec96b859-045a-4114-afba-7bdd30b48941",
+      "55b77ffb-59e4-4cef-bb2a-b21b3b3e0ebb",
+      "767b4d1b-aff2-433a-b5bc-8291aabc27b2"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "1ffa1157-49d7-4884-acc8-37029ce06748",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "4704a429-11df-4a81-a11d-917cbe184825",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "openai/gpt-5.4-nano",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 25,
+    "best_score_percentage": 77.26,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-08T18:34:57Z",
+    "best_submission_id": "cce7e509-9446-4450-9537-5f1b153fa080",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "5e476426-bcc6-43ce-a634-7d5dce25f754",
+      "3aee4a02-dbc6-403c-b2fc-6c881a3018c4",
+      "aa7786c8-b257-41df-b73a-9b98663c7445",
+      "147f2f76-aadb-48d8-91d9-38e67be05238",
+      "d72895bc-d6f4-4298-9450-2b332e7d301d"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 11,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "cce7e509-9446-4450-9537-5f1b153fa080",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "3eef3374-67af-4981-a109-6fec226d5602",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "google/gemma-4-26b-a4b-it",
+    "model_prefix": "google/",
+    "provider": "openrouter",
+    "leaderboard_rank": 26,
+    "best_score_percentage": 77.06,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-14T19:33:40Z",
+    "best_submission_id": "0b70b774-461f-404e-8ef9-76d2dbfd7628",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": "26b-a4b",
+    "model_size_b": 26.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "0b70b774-461f-404e-8ef9-76d2dbfd7628",
+      "ad754d4c-d6d5-4e18-9fd8-9743a490c8d5",
+      "562ccbe9-bf9a-40be-99ce-6d2ba6661a43",
+      "43c5c6ba-2ce6-40eb-8353-8eb4627a3581",
+      "1978ef66-1b7c-453f-a116-da3843f4279f",
+      "b9cc8882-edf1-4d6b-b29c-31fad6537e61"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "12d97add-30a2-4ede-b407-b5506b1043b7",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "dec8e9f8-b90a-418e-9705-91380b45ac0c",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "google/gemma-4-31b-it",
+    "model_prefix": "google/",
+    "provider": "openrouter",
+    "leaderboard_rank": 27,
+    "best_score_percentage": 77.04,
+    "leaderboard_submission_count": 11,
+    "submissions_total": 11,
+    "returned_submission_count": 11,
+    "latest_submission": "2026-05-14T21:20:48Z",
+    "best_submission_id": "9ed25f11-7ff8-4bce-a9bc-d6d2c057a1bf",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": "31b",
+    "model_size_b": 31.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "9ed25f11-7ff8-4bce-a9bc-d6d2c057a1bf",
+      "c232ec32-b797-466c-a68f-c0c12be9ad23",
+      "86953c27-553b-4423-9b63-804efece5d4a",
+      "1a0e94f8-17ba-4cac-9f98-a5b9e932b07b",
+      "9273ecba-67e3-4dd8-b00a-84f7d390df0f",
+      "20c3fa76-0fb2-4f80-b4bd-23bc1b45cda6",
+      "7c73db09-8f3b-4847-917a-9d2fa2c99895"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 4,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "aa8163ba-5c81-41de-83cf-02157c9eeee6",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "9acdc566-9261-40e0-9ad0-80ff82bd624c",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "z-ai/glm-5.1",
+    "model_prefix": "z-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 28,
+    "best_score_percentage": 76.57,
+    "leaderboard_submission_count": 5,
+    "submissions_total": 5,
+    "returned_submission_count": 5,
+    "latest_submission": "2026-05-08T21:11:26Z",
+    "best_submission_id": "2cfe011e-9d10-4a8a-bbdf-ee413f80973b",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/zai-org/GLM-5.1",
+    "model_size_raw": "744b-a40b",
+    "model_size_b": 744.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "2cfe011e-9d10-4a8a-bbdf-ee413f80973b",
+      "b2c056e9-8ec7-4ce2-9c7c-55978e3f5805",
+      "572f5c4f-4aec-4943-8424-0ae6cf58665b",
+      "3d5fc4ca-691b-43b5-b087-ca084b725abb",
+      "cdbe576f-5c15-4c69-9632-b6a71bf73d53"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "google/gemini-3.5-flash",
+    "model_prefix": "google/",
+    "provider": "openrouter",
+    "leaderboard_rank": 29,
+    "best_score_percentage": 76.27,
+    "leaderboard_submission_count": 5,
+    "submissions_total": 5,
+    "returned_submission_count": 5,
+    "latest_submission": "2026-05-19T23:39:05Z",
+    "best_submission_id": "850fcb91-feba-4ad1-91a6-e1d0ebef5db0",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "850fcb91-feba-4ad1-91a6-e1d0ebef5db0",
+      "c771a6ca-8523-4f79-a7f0-5a7e1227fedf",
+      "b807e008-115f-4540-9d0e-72de68004b5d",
+      "e34bb0dc-7e65-4960-a498-0494cc38e754",
+      "dca14f24-678e-4543-8264-e9c2e05fcb01"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "mistralai/mistral-large-2512",
+    "model_prefix": "mistralai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 30,
+    "best_score_percentage": 72.94,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-08T19:42:12Z",
+    "best_submission_id": "c7b15ec1-2f6b-4a3c-be48-24a4125386a7",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+    "model_size_raw": "675b-a41b",
+    "model_size_b": 675.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "c7b15ec1-2f6b-4a3c-be48-24a4125386a7",
+      "766dee1a-e10d-42db-88a4-66f52e2b2c4e",
+      "8162af52-a66b-4e77-b4a8-ef3b893472d0",
+      "a67191e8-c138-449a-8075-3b0bd112ee71",
+      "e45aa0f3-cce0-4219-a6da-3cede63fe0f4",
+      "4680ba27-034e-4999-a985-82aff7bc7eda"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "d8bb4a10-c5bc-4524-93a0-87ca1d9d62b9",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "f1b431db-81e6-4604-a36b-a76cc30a1e65",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "arcee-ai/trinity-large-preview",
+    "model_prefix": "arcee-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 31,
+    "best_score_percentage": 72.41,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-14T18:05:14Z",
+    "best_submission_id": "cd1a6c61-4521-453e-a20a-fd403ae7456b",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": "398b-a13b",
+    "model_size_b": 398.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 7,
+    "valid_submission_ids": [
+      "cd1a6c61-4521-453e-a20a-fd403ae7456b",
+      "65c0656a-0c3f-465e-897c-ea91185f50e1",
+      "c105c0fb-c053-4b58-b111-0caa7fe5132f",
+      "e56beab0-52a4-46c1-9874-816937c485d8",
+      "680e145c-5b87-45e4-b7b3-9c32592fa14c",
+      "27516b9e-4d2a-4f56-8bd1-d575d0511c74",
+      "b80dc579-fb1c-47f4-b649-0aed5329e159"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 9,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "64421eeb-7072-40ee-a32c-15d95317cd3f",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "f7e9a336-0e31-433e-afb6-70ebe65c99ee",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "minimax/minimax-m2.7",
+    "model_prefix": "minimax/",
+    "provider": "openrouter",
+    "leaderboard_rank": 32,
+    "best_score_percentage": 71.91,
+    "leaderboard_submission_count": 12,
+    "submissions_total": 12,
+    "returned_submission_count": 12,
+    "latest_submission": "2026-05-08T21:04:00Z",
+    "best_submission_id": "f5183e2a-c3a8-4244-9636-4a9d1e9875b0",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/MiniMaxAI/MiniMax-M2.7",
+    "model_size_raw": "229b-a10b",
+    "model_size_b": 229.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "1f15c4bb-007f-43eb-a837-9e47c7fd91cd",
+      "0b153929-6109-4635-92c6-21e112326ede",
+      "dcd08819-1f21-4f29-9d5c-90417cbdb1f5",
+      "3e354728-3f83-43a3-a2bc-ad45ba67648a",
+      "8b775882-3d35-4cc3-a045-18328f8e1fff",
+      "1a5d8140-1476-4b00-a824-748a3accdecc"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 6,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "f5183e2a-c3a8-4244-9636-4a9d1e9875b0",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "f35bb0cd-4b8a-4beb-ab70-1c2de3cac446",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "arcee-ai/trinity-large-thinking",
+    "model_prefix": "arcee-ai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 33,
+    "best_score_percentage": 71.15,
+    "leaderboard_submission_count": 9,
+    "submissions_total": 9,
+    "returned_submission_count": 9,
+    "latest_submission": "2026-05-14T18:49:44Z",
+    "best_submission_id": "94c0e3db-0c8a-42b4-9d5f-0bbaf2e8b019",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/arcee-ai/Trinity-Large-Thinking",
+    "model_size_raw": "398b-a13b",
+    "model_size_b": 398.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "94c0e3db-0c8a-42b4-9d5f-0bbaf2e8b019",
+      "b11e1cf4-6788-40f2-afa0-a9712f84c51a",
+      "55682839-6822-4d46-9f23-0475457a6603",
+      "18af841f-2b28-4c48-acd0-1204d844906e",
+      "9f96e56a-97a4-4fe8-b387-d9f2e34e2e89",
+      "9a3334b7-b5d1-4096-a22a-35e011a9ae47"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 3,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "995dd84e-8c2e-4f44-969a-2c821c5193cd",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "621a08da-96b4-4742-b0ba-badf2d225899",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "deepseek/deepseek-v4-pro",
+    "model_prefix": "deepseek/",
+    "provider": "openrouter",
+    "leaderboard_rank": 34,
+    "best_score_percentage": 60.87,
+    "leaderboard_submission_count": 6,
+    "submissions_total": 6,
+    "returned_submission_count": 6,
+    "latest_submission": "2026-05-14T21:42:07Z",
+    "best_submission_id": "edd91012-58f9-45e8-9a40-eb244031a969",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    "model_size_raw": "1638b-a49b",
+    "model_size_b": 1638.0,
+    "is_china_model": true,
+    "china_reason": "override",
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 0,
+    "valid_submission_ids": [],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 6
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "edd91012-58f9-45e8-9a40-eb244031a969",
+        "reason": "cost_zero"
+      },
+      {
+        "submission_id": "b76570fe-1829-427b-af82-87722297daeb",
+        "reason": "cost_zero"
+      }
+    ]
+  },
+  {
+    "model": "nvidia/nemotron-3-super-120b-a12b",
+    "model_prefix": "nvidia/",
+    "provider": "openrouter",
+    "leaderboard_rank": 35,
+    "best_score_percentage": 60.42,
+    "leaderboard_submission_count": 15,
+    "submissions_total": 15,
+    "returned_submission_count": 15,
+    "latest_submission": "2026-05-14T21:32:55Z",
+    "best_submission_id": "b5bf3b40-308d-4c53-b3cd-f09812a51c41",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+    "model_size_raw": "120b-a12b",
+    "model_size_b": 120.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 0,
+    "valid_submission_ids": [],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 5
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "e35eb860-ef50-49fd-87f2-7e6e2f67b999",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "c47d2288-c768-455c-a459-96b1a42e1a7b",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "b5bf3b40-308d-4c53-b3cd-f09812a51c41",
+        "reason": "cost_zero"
+      },
+      {
+        "submission_id": "3d7bb131-1229-4f0a-97c8-22e81882fa02",
+        "reason": "cost_zero"
+      }
+    ]
+  },
+  {
+    "model": "amazon/nova-2-lite-v1",
+    "model_prefix": "amazon/",
+    "provider": "openrouter",
+    "leaderboard_rank": 36,
+    "best_score_percentage": 58.92,
+    "leaderboard_submission_count": 16,
+    "submissions_total": 16,
+    "returned_submission_count": 16,
+    "latest_submission": "2026-05-14T16:59:39Z",
+    "best_submission_id": "b27bc97e-61a6-4db7-ac86-6fa0620e7582",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "788560f6-a06a-4d32-9245-f1011a1ba507",
+      "df2f6707-81e4-4b39-9644-1d5781f72c56",
+      "fc3466b2-7e0b-400c-932b-575f5b76baa8",
+      "481745b0-aa41-4840-9fde-991eecc13e42",
+      "d90e4b3b-5f81-42af-a29c-32d2be237466",
+      "10625f85-25a2-4e22-90ed-6d56d9782ddb"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 10,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "b27bc97e-61a6-4db7-ac86-6fa0620e7582",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "cdc8d3ee-7827-4f8f-8265-81acd2a28a00",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "anthropic/claude-sonnet-4",
+    "model_prefix": "anthropic/",
+    "provider": "openrouter",
+    "leaderboard_rank": 37,
+    "best_score_percentage": 57.84,
+    "leaderboard_submission_count": 2,
+    "submissions_total": 2,
+    "returned_submission_count": 2,
+    "latest_submission": "2026-05-05T08:15:51Z",
+    "best_submission_id": "6648a795-a3e2-4a70-a636-d8f7b87ba0fc",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Closed",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 0,
+    "valid_submission_ids": [],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 2,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "6648a795-a3e2-4a70-a636-d8f7b87ba0fc",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "1e420b30-051e-4f7b-ba95-e799be03e59e",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "openai/gpt-oss-120b",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 38,
+    "best_score_percentage": 47.45,
+    "leaderboard_submission_count": 12,
+    "submissions_total": 12,
+    "returned_submission_count": 12,
+    "latest_submission": "2026-05-08T18:33:21Z",
+    "best_submission_id": "48cdf068-8901-4f1b-b802-e63dcb6eba1a",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/openai/gpt-oss-120b",
+    "model_size_raw": "117b-a5b",
+    "model_size_b": 117.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "48cdf068-8901-4f1b-b802-e63dcb6eba1a",
+      "d53a8c0e-c017-40e3-b792-2a0f1293a79f",
+      "649cf18e-eb9d-40ea-996d-aad6a0804595",
+      "46f1d0e6-d672-405d-a30b-3c6ce802826b",
+      "b5721db3-3b8d-4fa2-b42c-801a4805ade0",
+      "83c5d31c-890a-424c-a798-72d0a6fb0514"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 6,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "c41acc18-cf4a-4090-bf77-93708cf6f750",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "2b22a56c-65ad-4967-8141-82a043f2d33e",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "openai/gpt-oss-20b",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 39,
+    "best_score_percentage": 41.8,
+    "leaderboard_submission_count": 10,
+    "submissions_total": 10,
+    "returned_submission_count": 10,
+    "latest_submission": "2026-05-14T17:03:13Z",
+    "best_submission_id": "9ab3409f-25f0-4f0f-812a-6a5d2776a36c",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/openai/gpt-oss-20b",
+    "model_size_raw": "21b-a4b",
+    "model_size_b": 21.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 6,
+    "valid_submission_ids": [
+      "ca8f2b1d-5932-41f1-91eb-4ec21b9a3b73",
+      "0342a5ce-4952-415e-95f6-8bad1040714f",
+      "1ee4f346-b9d4-492f-a609-6f7ce545ae64",
+      "8f286de7-f2a9-4578-aa06-25a4a0304ae8",
+      "492b2a37-4dd3-44cf-9573-bcffbd325602",
+      "ec8f8f2e-0f1b-4bfe-84bc-05ced27dda06"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 4,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "9ab3409f-25f0-4f0f-812a-6a5d2776a36c",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      },
+      {
+        "submission_id": "9262f57b-e1a7-43da-9562-9819ad41ad70",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "openai/gpt-5.5-pro",
+    "model_prefix": "openai/",
+    "provider": "openrouter",
+    "leaderboard_rank": 40,
+    "best_score_percentage": 29.9,
+    "leaderboard_submission_count": 5,
+    "submissions_total": 5,
+    "returned_submission_count": 5,
+    "latest_submission": "2026-05-14T23:10:18Z",
+    "best_submission_id": "d5fcb062-d826-4466-89c1-b4d74b1a4c66",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "d5fcb062-d826-4466-89c1-b4d74b1a4c66",
+      "deada882-7df0-464b-b263-b6237ae42a9e",
+      "cf2fefc4-def3-414b-9c3a-2c069323ec47",
+      "cd14ffb9-a067-4a20-97f6-56495d1c4da5",
+      "2ad9b0fd-ad1c-448e-ad17-b495b4d97167"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 0,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": []
+  },
+  {
+    "model": "inception/mercury-2",
+    "model_prefix": "inception/",
+    "provider": "openrouter",
+    "leaderboard_rank": 41,
+    "best_score_percentage": 20.09,
+    "leaderboard_submission_count": 6,
+    "submissions_total": 6,
+    "returned_submission_count": 6,
+    "latest_submission": "2026-05-08T18:28:01Z",
+    "best_submission_id": "362f815e-6479-445f-ac0a-6f5ec00cc4fe",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Unknown",
+    "hf_link": null,
+    "model_size_raw": null,
+    "model_size_b": null,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": false,
+    "open_weight_reason": null,
+    "valid_submission_count": 5,
+    "valid_submission_ids": [
+      "8fa1cbb2-cad5-46ca-a600-bfb2138b42f1",
+      "34623f6d-dcf1-4d1d-a381-e7ad715ea0ec",
+      "10615c04-163c-4ded-b94b-643cd8afc814",
+      "e6514a4d-c238-4cb4-acb4-829df017d05b",
+      "e6b07bfe-639f-4b54-9832-41f256afaaf1"
+    ],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 1,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "362f815e-6479-445f-ac0a-6f5ec00cc4fe",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "meta-llama/llama-3.1-70b-instruct",
+    "model_prefix": "meta-llama/",
+    "provider": "openrouter",
+    "leaderboard_rank": 42,
+    "best_score_percentage": 10.7,
+    "leaderboard_submission_count": 1,
+    "submissions_total": 1,
+    "returned_submission_count": 1,
+    "latest_submission": "2026-05-04T22:35:32Z",
+    "best_submission_id": "296e049c-8692-466d-9bd8-c5e8b3f26f40",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct",
+    "model_size_raw": "70b",
+    "model_size_b": 70.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 0,
+    "valid_submission_ids": [],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 1,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "296e049c-8692-466d-9bd8-c5e8b3f26f40",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  },
+  {
+    "model": "meta-llama/llama-4-scout",
+    "model_prefix": "meta-llama/",
+    "provider": "openrouter",
+    "leaderboard_rank": 43,
+    "best_score_percentage": 3.19,
+    "leaderboard_submission_count": 1,
+    "submissions_total": 1,
+    "returned_submission_count": 1,
+    "latest_submission": "2026-05-04T21:49:33Z",
+    "best_submission_id": "c4d1d86a-596f-495c-bb6c-ed2a35e35869",
+    "benchmark_version": "2.0.0",
+    "official": true,
+    "weights": "Open",
+    "hf_link": "https://huggingface.co/meta-llama/Llama-4-Scout-17B-16E-Instruct",
+    "model_size_raw": "109b-a17b",
+    "model_size_b": 109.0,
+    "is_china_model": false,
+    "china_reason": null,
+    "is_open_weight_model": true,
+    "open_weight_reason": "override",
+    "valid_submission_count": 0,
+    "valid_submission_ids": [],
+    "invalid_reasons": {
+      "canonical_extra": 0,
+      "canonical_missing": 1,
+      "task_time_zero": 0,
+      "cost_zero": 0
+    },
+    "sample_invalid_submissions": [
+      {
+        "submission_id": "c4d1d86a-596f-495c-bb6c-ed2a35e35869",
+        "reason": "canonical_missing",
+        "missing_tasks": [
+          "task_log_hdfs_block_ops",
+          "task_log_hdfs_connections",
+          "task_log_hdfs_failures",
+          "task_log_hdfs_slow_ops",
+          "task_log_hdfs_storage"
+        ],
+        "missing_tasks_truncated": true
+      }
+    ]
+  }
+]

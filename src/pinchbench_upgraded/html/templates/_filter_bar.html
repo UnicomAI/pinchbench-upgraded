@@ -1,0 +1,33 @@
+<div id="filter-bar">
+  <div class="filter-group">
+    <span class="filter-label" data-i18n="filter_obs">运行次数阈值</span>
+    <div class="filter-slider-wrap">
+      <input type="range" class="filter-slider filter-control" id="filter-min-obs" name="min_obs" min="1" max="10" value="{{ filter_defaults.min_obs }}">
+      <span class="slider-val" id="filter-min-obs-val">{{ filter_defaults.min_obs }}</span>
+    </div>
+  </div>
+  <div class="filter-divider"></div>
+  <div class="filter-group">
+    <span class="filter-label" data-i18n="filter_country">国别</span>
+    <div class="radio-group">
+      <input type="radio" name="country" id="country-china" value="china" class="filter-control"{% if filter_defaults.country == 'china' %} checked{% endif %}>
+      <label for="country-china" data-i18n="filter_china">中国</label>
+      <input type="radio" name="country" id="country-other" value="other" class="filter-control"{% if filter_defaults.country == 'other' %} checked{% endif %}>
+      <label for="country-other" data-i18n="filter_other">其他国家</label>
+      <input type="radio" name="country" id="country-all" value="all" class="filter-control"{% if filter_defaults.country == 'all' %} checked{% endif %}>
+      <label for="country-all" data-i18n="filter_all">不限</label>
+    </div>
+  </div>
+  <div class="filter-divider"></div>
+  <div class="filter-group">
+    <span class="filter-label" data-i18n="filter_open_label">开源</span>
+    <div class="radio-group">
+      <input type="radio" name="open_source" id="open-open" value="open" class="filter-control"{% if filter_defaults.open_source == 'open' %} checked{% endif %}>
+      <label for="open-open" data-i18n="filter_open">开源</label>
+      <input type="radio" name="open_source" id="open-closed" value="closed" class="filter-control"{% if filter_defaults.open_source == 'closed' %} checked{% endif %}>
+      <label for="open-closed" data-i18n="filter_closed">闭源</label>
+      <input type="radio" name="open_source" id="open-all" value="all" class="filter-control"{% if filter_defaults.open_source == 'all' %} checked{% endif %}>
+      <label for="open-all" data-i18n="filter_all">不限</label>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,938 @@
+{
+  "overrides_china_prefixes": [
+    "bytedance-seed/",
+    "deepseek/",
+    "inclusionai/",
+    "minimax/",
+    "moonshotai/",
+    "qwen/",
+    "stepfun/",
+    "xiaomi/",
+    "z-ai/"
+  ],
+  "candidates_china_prefixes": [
+    {
+      "prefix": "amazon/",
+      "official_models": [
+        "amazon/nova-2-lite-v1"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "anthropic/",
+      "official_models": [
+        "anthropic/claude-haiku-4.5",
+        "anthropic/claude-opus-4.6",
+        "anthropic/claude-opus-4.7",
+        "anthropic/claude-sonnet-4",
+        "anthropic/claude-sonnet-4.6"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "arcee-ai/",
+      "official_models": [
+        "arcee-ai/trinity-large-preview",
+        "arcee-ai/trinity-large-thinking"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "google/",
+      "official_models": [
+        "google/gemini-3-flash-preview",
+        "google/gemini-3.1-flash-lite",
+        "google/gemini-3.1-pro-preview",
+        "google/gemini-3.5-flash",
+        "google/gemma-4-26b-a4b-it",
+        "google/gemma-4-31b-it"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "inception/",
+      "official_models": [
+        "inception/mercury-2"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "meta-llama/",
+      "official_models": [
+        "meta-llama/llama-3.1-70b-instruct",
+        "meta-llama/llama-4-scout"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "mistralai/",
+      "official_models": [
+        "mistralai/devstral-2512",
+        "mistralai/mistral-large-2512",
+        "mistralai/mistral-small-2603"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "nvidia/",
+      "official_models": [
+        "nvidia/nemotron-3-super-120b-a12b"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "openai/",
+      "official_models": [
+        "openai/gpt-5.4",
+        "openai/gpt-5.4-mini",
+        "openai/gpt-5.4-nano",
+        "openai/gpt-5.5",
+        "openai/gpt-5.5-pro",
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b"
+      ],
+      "review_reason": "with manual review"
+    },
+    {
+      "prefix": "x-ai/",
+      "official_models": [
+        "x-ai/grok-4.20",
+        "x-ai/grok-4.3"
+      ],
+      "review_reason": "with manual review"
+    }
+  ],
+  "overrides_model_size": {
+    "meta-llama/llama-3.1-70b-instruct": {
+      "model_size_raw": "70b",
+      "model_size_b": 70.0
+    },
+    "meta-llama/llama-4-maverick": {
+      "model_size_raw": "400b-a17b",
+      "model_size_b": 400.0
+    },
+    "meta-llama/llama-4-scout": {
+      "model_size_raw": "109b-a17b",
+      "model_size_b": 109.0
+    },
+    "mistralai/devstral-2512": {
+      "model_size_raw": "123b",
+      "model_size_b": 123.0
+    },
+    "mistralai/mistral-large-2512": {
+      "model_size_raw": "675b-a41b",
+      "model_size_b": 675.0
+    },
+    "nvidia/nemotron-3-super-120b-a12b": {
+      "model_size_raw": "120b-a12b",
+      "model_size_b": 120.0
+    },
+    "openai/gpt-oss-120b": {
+      "model_size_raw": "117b-a5b",
+      "model_size_b": 117.0
+    },
+    "openai/gpt-oss-20b": {
+      "model_size_raw": "21b-a4b",
+      "model_size_b": 21.0
+    },
+    "qwen/qwen-2.5-7b-instruct": {
+      "model_size_raw": "7b",
+      "model_size_b": 7.0
+    },
+    "qwen/qwen3.5-122b-a10b": {
+      "model_size_raw": "122b-a10b",
+      "model_size_b": 122.0
+    },
+    "qwen/qwen3.5-35b-a3b": {
+      "model_size_raw": "35b-a3b",
+      "model_size_b": 35.0
+    },
+    "qwen/qwen3.5-397b-a17b": {
+      "model_size_raw": "397b-a17b",
+      "model_size_b": 397.0
+    },
+    "arcee-ai/trinity-large-preview": {
+      "model_size_raw": "398b-a13b",
+      "model_size_b": 398.0
+    },
+    "deepseek/deepseek-v3.2": {
+      "model_size_raw": "685b-a37b",
+      "model_size_b": 685.0
+    },
+    "minimax/minimax-m2.1": {
+      "model_size_raw": "229b-a10b",
+      "model_size_b": 229.0
+    },
+    "minimax/minimax-m2.5": {
+      "model_size_raw": "229b-a10b",
+      "model_size_b": 229.0
+    },
+    "moonshotai/kimi-k2.5": {
+      "model_size_raw": "1024b-a32b",
+      "model_size_b": 1024.0
+    },
+    "qwen/qwen3-coder-next": {
+      "model_size_raw": "80b-a3b",
+      "model_size_b": 80.0
+    },
+    "qwen/qwen3.5-plus-02-15": {
+      "model_size_raw": "397b-a17b",
+      "model_size_b": 397.0
+    },
+    "stepfun/step-3.5-flash": {
+      "model_size_raw": "196b-a11b",
+      "model_size_b": 196.0
+    },
+    "xiaomi/mimo-v2-flash": {
+      "model_size_raw": "309b-a15b",
+      "model_size_b": 309.0
+    },
+    "z-ai/glm-4.5-air": {
+      "model_size_raw": "106b-a12b",
+      "model_size_b": 106.0
+    },
+    "z-ai/glm-5": {
+      "model_size_raw": "744b-a40b",
+      "model_size_b": 744.0
+    },
+    "arcee-ai/trinity-large-thinking": {
+      "model_size_raw": "398b-a13b",
+      "model_size_b": 398
+    },
+    "qwen/qwen3.5-27b": {
+      "model_size_raw": "27b",
+      "model_size_b": 27.0
+    },
+    "minimax/minimax-m2.7": {
+      "model_size_raw": "229b-a10b",
+      "model_size_b": 229.0
+    },
+    "google/gemma-4-26b-a4b-it": {
+      "model_size_raw": "26b-a4b",
+      "model_size_b": 26.0
+    },
+    "google/gemma-4-31b-it": {
+      "model_size_raw": "31b",
+      "model_size_b": 31.0
+    },
+    "qwen/qwen3.5-9b": {
+      "model_size_raw": "9b",
+      "model_size_b": 9.0
+    },
+    "deepseek/deepseek-v4-flash": {
+      "model_size_raw": "284b-a13b",
+      "model_size_b": 284.0
+    },
+    "deepseek/deepseek-v4-pro": {
+      "model_size_raw": "1638b-a49b",
+      "model_size_b": 1638.0
+    },
+    "mistralai/mistral-small-2603": {
+      "model_size_raw": "119b-a6.5b",
+      "model_size_b": 119.0
+    },
+    "xiaomi/mimo-v2.5": {
+      "model_size_raw": "310b-a15b",
+      "model_size_b": 310.0
+    },
+    "xiaomi/mimo-v2.5-pro": {
+      "model_size_raw": "1044b-a42b",
+      "model_size_b": 1044.0
+    },
+    "z-ai/glm-5.1": {
+      "model_size_raw": "744b-a40b",
+      "model_size_b": 744.0
+    },
+    "inclusionai/ling-2.6-1t": {
+      "model_size_raw": "1024b-a63b",
+      "model_size_b": 1024.0
+    }
+  },
+  "candidates_model_size": [
+    {
+      "model": "amazon/nova-2-lite-v1",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-haiku-4.5",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-opus-4.6",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-opus-4.7",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-sonnet-4",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "bytedance-seed/seed-2.0-lite",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3.5-flash",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "inception/mercury-2",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.4",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.4-nano",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.5",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.5-pro",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "qwen/qwen3.6-plus",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "x-ai/grok-4.20",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "x-ai/grok-4.3",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "z-ai/glm-5-turbo",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "z-ai/glm-5v-turbo",
+      "provider": "openrouter",
+      "suggested_model_size_raw": null,
+      "suggested_model_size_b": null,
+      "detected_from": null,
+      "review_reason": "with manual review"
+    }
+  ],
+  "overrides_is_open_weight": [
+    "arcee-ai/trinity-large-preview",
+    "arcee-ai/trinity-large-thinking",
+    "deepseek/deepseek-v4-flash",
+    "deepseek/deepseek-v4-pro",
+    "google/gemma-4-26b-a4b-it",
+    "google/gemma-4-31b-it",
+    "inclusionai/ling-2.6-1t",
+    "meta-llama/llama-3.1-70b-instruct",
+    "meta-llama/llama-4-scout",
+    "minimax/minimax-m2.7",
+    "mistralai/devstral-2512",
+    "mistralai/mistral-large-2512",
+    "mistralai/mistral-small-2603",
+    "moonshotai/kimi-k2.5",
+    "nvidia/nemotron-3-super-120b-a12b",
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+    "stepfun/step-3.5-flash",
+    "xiaomi/mimo-v2.5",
+    "xiaomi/mimo-v2.5-pro",
+    "z-ai/glm-5.1"
+  ],
+  "candidates_is_open_weight": [
+    {
+      "model": "amazon/nova-2-lite-v1",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-haiku-4.5",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-opus-4.6",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-opus-4.7",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-sonnet-4",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "anthropic/claude-sonnet-4.6",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "bytedance-seed/seed-2.0-lite",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3-flash-preview",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3.1-pro-preview",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "google/gemini-3.5-flash",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "inception/mercury-2",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.4",
+      "provider": "openrouter",
+      "upstream_weights": "Closed",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.4-mini",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.4-nano",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.5",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "openai/gpt-5.5-pro",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "qwen/qwen3.6-plus",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "x-ai/grok-4.20",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "x-ai/grok-4.3",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "z-ai/glm-5-turbo",
+      "provider": "openrouter",
+      "upstream_weights": "Open",
+      "upstream_hf_link": "https://huggingface.co/zai-org/GLM-5-Turbo",
+      "review_reason": "with manual review"
+    },
+    {
+      "model": "z-ai/glm-5v-turbo",
+      "provider": "openrouter",
+      "upstream_weights": "Unknown",
+      "upstream_hf_link": null,
+      "review_reason": "with manual review"
+    }
+  ],
+  "overrides_category_zh": {
+    "log_analysis": "日志分析",
+    "meeting_analysis": "会议分析",
+    "csv_analysis": "CSV 数据分析",
+    "coding": "代码开发",
+    "analysis": "通用分析",
+    "research": "信息调研",
+    "productivity": "办公效率",
+    "writing": "写作",
+    "skills": "技能与工作流",
+    "integrations": "Google Workspace 集成",
+    "memory": "记忆与上下文"
+  },
+  "candidates_category_zh": [],
+  "overrides_task_zh": {
+    "task_access_log_anomaly": "访问控制日志异常检测",
+    "task_contract_analysis": "合同/法律分析",
+    "task_cve_security_triage": "CVE 安全分诊",
+    "task_earnings_analysis": "财报分析",
+    "task_eli5_pdf_summary": "PDF 通俗解读摘要",
+    "task_email_search": "邮件检索与汇总",
+    "task_financial_ratio_calculation": "财务比率计算",
+    "task_image_identification": "图像识别（手机/食物/菜单）",
+    "task_openclaw_comprehension": "OpenClaw 报告解读",
+    "task_session_chain_analysis": "会话链分析与设计评审",
+    "task_spreadsheet_summary": "CSV/Excel 数据汇总",
+    "task_summary": "文档摘要",
+    "task_browser_automation": "浏览器自动化流程",
+    "task_cicd_pipeline_debug": "CI/CD 流水线调试",
+    "task_codebase_navigation": "代码库浏览",
+    "task_dockerfile_optimization": "Dockerfile 优化",
+    "task_git_rescue_recovery": "Git 救援与恢复",
+    "task_iterative_code_refine": "代码迭代优化",
+    "task_k8s_debugging": "K8s/IaC 调试",
+    "task_multi_file_refactoring": "跨文件重构",
+    "task_playwright_e2e": "Playwright 端到端表单测试",
+    "task_selector_fix": "测试维护与选择器修复",
+    "task_shell_command_generator": "Shell 命令生成",
+    "task_test_generation": "测试用例生成",
+    "task_video_transcript_extraction": "视频字幕提取与摘要",
+    "task_weather": "天气查询脚本",
+    "task_csv_cities_density": "美国各州城市人口聚集度",
+    "task_csv_cities_filter": "美国城市多条件筛选",
+    "task_csv_cities_growth": "美国城市地理分布分析",
+    "task_csv_cities_ranking": "美国城市人口排名",
+    "task_csv_finance_report": "苹果 2014 股票综合财务报告",
+    "task_csv_gdp_per_capita": "各国人均 GDP 估算",
+    "task_csv_gdp_ranking": "各国 GDP 排名",
+    "task_csv_gdp_regions": "各地区 GDP 分析",
+    "task_csv_iris_classify": "鸢尾花品种分类规则",
+    "task_csv_iris_outliers": "鸢尾花异常点检测",
+    "task_csv_iris_summary": "鸢尾花统计摘要",
+    "task_csv_life_exp_change": "预期寿命时间变化分析",
+    "task_csv_life_exp_outliers": "预期寿命异常点检测",
+    "task_csv_life_exp_ranking": "各国预期寿命排名",
+    "task_csv_pension_liability": "美国养老金负债分析",
+    "task_csv_pension_ranking": "美国各州养老金排名",
+    "task_csv_pension_risk": "美国养老金风险评估",
+    "task_csv_stations_by_elevation": "爱达荷气象站海拔排名",
+    "task_csv_stations_coverage": "爱达荷气象站覆盖缺口分析",
+    "task_csv_stations_filter": "爱达荷气象站多条件筛选",
+    "task_csv_stock_best_worst": "苹果 2014 股票最佳与最差交易日",
+    "task_csv_stock_trend": "苹果 2014 股票趋势分析",
+    "task_csv_stock_volatility": "苹果 2014 股票波动率分析",
+    "task_csv_temp_anomalies": "全球气温异常检测",
+    "task_csv_temp_decades": "全球气温十年对比",
+    "task_csv_temp_trend": "全球气温趋势分析",
+    "task_gws_cross_service": "GWS 跨服务工作流",
+    "task_gws_email_triage": "GWS 邮件分诊",
+    "task_gws_task_management": "GWS 任务管理",
+    "task_log_apache_client_issues": "Apache 错误日志 - 异常客户端 IP 识别",
+    "task_log_apache_critical": "Apache 错误日志 - 关键安全问题识别",
+    "task_log_apache_error_summary": "Apache 错误日志 - 错误汇总报告生成",
+    "task_log_apache_timeline": "Apache 错误日志 - 错误时间线",
+    "task_log_apache_top_errors": "Apache 错误日志 - Top 错误类型排名",
+    "task_log_hdfs_block_ops": "HDFS DataNode 日志 - 块操作汇总",
+    "task_log_hdfs_connections": "HDFS DataNode 日志 - 连接模式分析",
+    "task_log_hdfs_failures": "HDFS DataNode 日志 - 块与副本失败分析",
+    "task_log_hdfs_slow_ops": "HDFS DataNode 日志 - 慢操作检测",
+    "task_log_hdfs_storage": "HDFS DataNode 日志 - 存储与容量分析",
+    "task_log_mapreduce_failures": "MapReduce 日志 - 失败任务分析",
+    "task_log_mapreduce_jobs": "MapReduce 日志 - 作业完成汇总",
+    "task_log_mapreduce_resources": "MapReduce 日志 - 资源利用率分析",
+    "task_log_mapreduce_slow_tasks": "MapReduce 日志 - 慢任务识别",
+    "task_log_mapreduce_timeline": "MapReduce 日志 - 作业时间线可视化",
+    "task_log_nginx_errors": "Nginx 访问日志 - 错误模式分析",
+    "task_log_nginx_slow_requests": "Nginx 访问日志 - 大响应识别",
+    "task_log_nginx_status_codes": "Nginx 访问日志 - HTTP 状态码分布",
+    "task_log_nginx_traffic": "Nginx 访问日志 - 时间维度流量模式",
+    "task_log_nginx_user_agents": "Nginx 访问日志 - User Agent 分析",
+    "task_log_ssh_brute_force": "SSH 认证日志 - 暴力破解检测",
+    "task_log_ssh_failed_logins": "SSH 认证日志 - 失败登录分析",
+    "task_log_ssh_successful": "SSH 认证日志 - 成功认证汇总",
+    "task_log_ssh_unusual_times": "SSH 认证日志 - 异常时段登录检测",
+    "task_log_ssh_user_activity": "SSH 认证日志 - 用户登录活动报告",
+    "task_log_syslog_anomalies": "Linux 系统日志 - 异常检测",
+    "task_log_syslog_auth_failures": "Linux 系统日志 - 认证失败汇总",
+    "task_log_syslog_boot": "Linux 系统日志 - 启动序列分析",
+    "task_log_syslog_cron": "Linux 系统日志 - Cron 任务执行分析",
+    "task_log_syslog_services": "Linux 系统日志 - 服务启停汇总",
+    "task_meeting_advisory_acronyms": "NTIA 顾问委员会 - 缩写表",
+    "task_meeting_advisory_attendees": "NTIA 顾问委员会 - 出席者名单",
+    "task_meeting_advisory_stakeholders": "NTIA 顾问委员会 - 利益相关方诉求",
+    "task_meeting_advisory_technical": "NTIA 顾问委员会 - 技术讨论",
+    "task_meeting_advisory_timeline": "NTIA 顾问委员会 - 时间线与节点",
+    "task_meeting_blog_post": "会议纪要转博客",
+    "task_meeting_council_budget": "坦帕市议会 - 预算讨论提取",
+    "task_meeting_council_contact_info": "坦帕市议会 - 联系信息提取",
+    "task_meeting_council_neighborhood": "坦帕市议会 - 社区与选区识别",
+    "task_meeting_council_public_comment": "坦帕市议会 - 公众发言汇总",
+    "task_meeting_council_upcoming": "坦帕市议会 - 后续事项与节点",
+    "task_meeting_council_votes": "坦帕市议会 - 动议与投票结果",
+    "task_meeting_executive_summary": "会议执行摘要",
+    "task_meeting_follow_up_email": "会议跟进邮件",
+    "task_meeting_gov_controversy": "NASA UAP 听证 - 争议性陈述",
+    "task_meeting_gov_data_sources": "NASA UAP 听证 - 数据来源提取",
+    "task_meeting_gov_next_steps": "NASA UAP 听证 - 下一步计划提取",
+    "task_meeting_gov_qa_extract": "NASA UAP 听证 - 问答提取",
+    "task_meeting_gov_recommendations": "NASA UAP 听证 - 专家组建议",
+    "task_meeting_gov_speaker_summary": "NASA UAP 听证 - 发言人摘要",
+    "task_meeting_searchable_index": "会议可检索索引",
+    "task_meeting_sentiment_analysis": "会议情绪分析",
+    "task_meeting_tech_action_items": "会议行动项提取",
+    "task_meeting_tech_competitors": "会议竞品分析提取",
+    "task_meeting_tech_decisions": "会议决策提取",
+    "task_meeting_tech_messaging": "会议传播框架提取",
+    "task_meeting_tech_product_features": "会议产品功能优先级",
+    "task_meeting_tldr": "会议 TL;DR 概要",
+    "task_memory": "上下文记忆检索",
+    "task_second_brain": "第二大脑知识沉淀",
+    "task_calendar": "日历事件创建",
+    "task_cron_organizer": "Cron 表达式生成",
+    "task_daily_summary": "每日研究摘要生成",
+    "task_email_triage": "邮箱分诊",
+    "task_pdf_to_calendar": "PDF 导入日历",
+    "task_sanity": "基础冒烟检查",
+    "task_subway_navigation": "纽约地铁导航",
+    "task_todo_list_cleanup": "待办清单整理",
+    "task_byok_best_practices": "AI 推理 BYOK 最佳实践",
+    "task_competitive_research": "竞品对比研究",
+    "task_deep_research": "深度调研（含引用）",
+    "task_eu_regulation_research": "欧盟 AI 法案合规研究",
+    "task_events": "技术会议调研",
+    "task_executive_lookup": "高管信息查询",
+    "task_it_procurement": "IT 采购调研",
+    "task_market_research": "竞争市场调研",
+    "task_oss_alternative_research": "开源替代方案调研",
+    "task_polymarket_briefing": "Polymarket 与新闻简报",
+    "task_pricing_research": "供应商定价对比",
+    "task_stock": "股价查询",
+    "task_clawdhub": "项目结构创建",
+    "task_files": "文件结构创建",
+    "task_gh_issue_triage": "GitHub Issue 分诊",
+    "task_image_gen": "AI 图像生成",
+    "task_skill_search": "跨文件搜索替换",
+    "task_workflow": "多步 API 工作流",
+    "task_blog": "博客撰写",
+    "task_commit_message_writer": "Commit 信息撰写",
+    "task_email": "专业邮件撰写",
+    "task_email_reply_drafting": "未读邮件回复撰写",
+    "task_humanizer": "AI 生成博客润色",
+    "task_readme_generation": "README 生成"
+  },
+  "candidates_task_zh": [],
+  "selected_benchmark_versions": [
+    "2.0.0"
+  ],
+  "selected_task_ids": [
+    "task_access_log_anomaly",
+    "task_blog",
+    "task_browser_automation",
+    "task_byok_best_practices",
+    "task_calendar",
+    "task_cicd_pipeline_debug",
+    "task_clawdhub",
+    "task_codebase_navigation",
+    "task_commit_message_writer",
+    "task_competitive_research",
+    "task_contract_analysis",
+    "task_cron_organizer",
+    "task_csv_cities_density",
+    "task_csv_cities_filter",
+    "task_csv_cities_growth",
+    "task_csv_cities_ranking",
+    "task_csv_finance_report",
+    "task_csv_gdp_per_capita",
+    "task_csv_gdp_ranking",
+    "task_csv_gdp_regions",
+    "task_csv_iris_classify",
+    "task_csv_iris_outliers",
+    "task_csv_iris_summary",
+    "task_csv_life_exp_change",
+    "task_csv_life_exp_outliers",
+    "task_csv_life_exp_ranking",
+    "task_csv_pension_liability",
+    "task_csv_pension_ranking",
+    "task_csv_pension_risk",
+    "task_csv_stations_by_elevation",
+    "task_csv_stations_coverage",
+    "task_csv_stations_filter",
+    "task_csv_stock_best_worst",
+    "task_csv_stock_trend",
+    "task_csv_stock_volatility",
+    "task_csv_temp_anomalies",
+    "task_csv_temp_decades",
+    "task_csv_temp_trend",
+    "task_cve_security_triage",
+    "task_daily_summary",
+    "task_deep_research",
+    "task_dockerfile_optimization",
+    "task_earnings_analysis",
+    "task_eli5_pdf_summary",
+    "task_email",
+    "task_email_reply_drafting",
+    "task_email_search",
+    "task_email_triage",
+    "task_eu_regulation_research",
+    "task_events",
+    "task_executive_lookup",
+    "task_files",
+    "task_financial_ratio_calculation",
+    "task_gh_issue_triage",
+    "task_git_rescue_recovery",
+    "task_gws_cross_service",
+    "task_gws_email_triage",
+    "task_gws_task_management",
+    "task_humanizer",
+    "task_image_gen",
+    "task_image_identification",
+    "task_it_procurement",
+    "task_iterative_code_refine",
+    "task_k8s_debugging",
+    "task_log_apache_client_issues",
+    "task_log_apache_critical",
+    "task_log_apache_error_summary",
+    "task_log_apache_timeline",
+    "task_log_apache_top_errors",
+    "task_log_hdfs_block_ops",
+    "task_log_hdfs_connections",
+    "task_log_hdfs_failures",
+    "task_log_hdfs_slow_ops",
+    "task_log_hdfs_storage",
+    "task_log_mapreduce_failures",
+    "task_log_mapreduce_jobs",
+    "task_log_mapreduce_resources",
+    "task_log_mapreduce_slow_tasks",
+    "task_log_mapreduce_timeline",
+    "task_log_nginx_errors",
+    "task_log_nginx_slow_requests",
+    "task_log_nginx_status_codes",
+    "task_log_nginx_traffic",
+    "task_log_nginx_user_agents",
+    "task_log_ssh_brute_force",
+    "task_log_ssh_failed_logins",
+    "task_log_ssh_successful",
+    "task_log_ssh_unusual_times",
+    "task_log_ssh_user_activity",
+    "task_log_syslog_anomalies",
+    "task_log_syslog_auth_failures",
+    "task_log_syslog_boot",
+    "task_log_syslog_cron",
+    "task_log_syslog_services",
+    "task_market_research",
+    "task_meeting_advisory_acronyms",
+    "task_meeting_advisory_attendees",
+    "task_meeting_advisory_stakeholders",
+    "task_meeting_advisory_technical",
+    "task_meeting_advisory_timeline",
+    "task_meeting_blog_post",
+    "task_meeting_council_budget",
+    "task_meeting_council_contact_info",
+    "task_meeting_council_neighborhood",
+    "task_meeting_council_public_comment",
+    "task_meeting_council_upcoming",
+    "task_meeting_council_votes",
+    "task_meeting_executive_summary",
+    "task_meeting_follow_up_email",
+    "task_meeting_gov_controversy",
+    "task_meeting_gov_data_sources",
+    "task_meeting_gov_next_steps",
+    "task_meeting_gov_qa_extract",
+    "task_meeting_gov_recommendations",
+    "task_meeting_gov_speaker_summary",
+    "task_meeting_searchable_index",
+    "task_meeting_sentiment_analysis",
+    "task_meeting_tech_action_items",
+    "task_meeting_tech_competitors",
+    "task_meeting_tech_decisions",
+    "task_meeting_tech_messaging",
+    "task_meeting_tech_product_features",
+    "task_meeting_tldr",
+    "task_memory",
+    "task_multi_file_refactoring",
+    "task_openclaw_comprehension",
+    "task_oss_alternative_research",
+    "task_pdf_to_calendar",
+    "task_playwright_e2e",
+    "task_polymarket_briefing",
+    "task_pricing_research",
+    "task_readme_generation",
+    "task_sanity",
+    "task_second_brain",
+    "task_selector_fix",
+    "task_session_chain_analysis",
+    "task_shell_command_generator",
+    "task_skill_search",
+    "task_spreadsheet_summary",
+    "task_stock",
+    "task_subway_navigation",
+    "task_summary",
+    "task_test_generation",
+    "task_todo_list_cleanup",
+    "task_video_transcript_extraction",
+    "task_weather",
+    "task_workflow"
+  ],
+  "notes": {
+    "overrides_china_prefixes": "人工确认的中国模型前缀。代码只读不写。scope 不会向这里增删条目，可以包含已下线版本中的前缀（幽灵保留）。人工审核 candidates_china_prefixes 后，请把确认属于中国的前缀手动加进这里。",
+    "candidates_china_prefixes": "由 scope 自动重生：选中版本下观测到所有非 overrides_china_prefixes 的厂商前缀。每项附 official_models 供人工判断。代码不会把这里的条目自动晋升到 overrides。",
+    "overrides_model_size": "人工确认的模型参数量。代码只读不写。scope 不会向这里增删条目，可以包含已下线模型（幽灵保留）。如果模型在这里，则用这里的 model_size_raw / model_size_b 作为最终值；否则视为未知（HTML 显示 -）。",
+    "candidates_model_size": "由 scope 自动重生：选中版本下观测到所有非 overrides_model_size 的模型。每项附 suggested_model_size_raw / suggested_model_size_b / detected_from 供人工参考。未检测出参数量的也在这里（detected_from=null），需要人工填具体值后再加到 overrides。",
+    "selected_benchmark_versions": "人工指定的 benchmark_version 列表（hash 或 semver）。Step 2 只处理 submission.benchmark_version 落在此列表的 submission；其余被前置过滤。空数组 → step2 报错。请先运行 `pinchbench-upgraded inventory` 阅读 version_inventory_report.md 再据此填写。",
+    "selected_task_ids": "人工指定的 canonical 任务全集。Step 2 对每条 submission 做集合相等判定：set(submission.tasks[*].task_id) == set(selected_task_ids) → 有效，否则按差集归类失效。应是 selected_benchmark_versions 选中版本所有任务的子集。空数组 → step2 报错。",
+    "overrides_category_zh": "人工确认的大类英文 → 中文翻译表。代码只读不写。命中此表 → HTML 用此表中文名；否则 → HTML 显示英文原名（无 fallback）。scope 不会向这里增删条目，可以包含已下线分类。",
+    "candidates_category_zh": "由 scope 自动重生：选中版本下观测到所有非 overrides_category_zh 的 category。上游新增没填 frontmatter.category 的 task 时，'uncategorized' 会作为候选出现，等待人工翻译。",
+    "overrides_task_zh": "人工确认的 task_id → 中文任务名翻译表。代码只读不写。命中此表 → HTML 用此表中文名；否则 → HTML 显示英文原名。scope 不会向这里增删条目，可以包含已下线任务。",
+    "candidates_task_zh": "由 scope 自动重生：选中版本下观测到所有非 overrides_task_zh 的 task_id。每项含 task_id、英文 task_name 与归一化后的 category。",
+    "overrides_is_open_weight": "人工确认的开源模型清单（list[str]）。代码只读不写。在这个列表里 → is_open_weight=true；否则 → false（无视上游 weights / hf_link）。scope 不会向这里增删条目，可以包含已下线模型（幽灵保留）。",
+    "candidates_is_open_weight": "由 scope 自动重生：选中版本下观测到所有非 overrides_is_open_weight 的模型。每项附 upstream_weights / upstream_hf_link 实录供人工参考。"
+  }
+}
