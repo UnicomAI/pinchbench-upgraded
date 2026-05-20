@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>PinchBench-Upgraded · 排行榜</title>
+  <style>
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+           max-width: 760px; margin: 8vh auto; padding: 0 24px; color: #1a1a1a; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    p.sub { color: #666; margin-top: 0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+    a.card { display: block; padding: 24px; border: 1px solid #e5e5e5; border-radius: 12px;
+             text-decoration: none; color: inherit; transition: all .15s; }
+    a.card:hover { border-color: #1a1a1a; transform: translateY(-2px); }
+    a.card h2 { margin: 0 0 8px; font-size: 18px; }
+    a.card span { color: #666; font-size: 14px; }
+    footer { margin-top: 48px; font-size: 13px; color: #999; }
+    footer a { color: #666; }
+  </style>
+</head>
+<body>
+  <h1>PinchBench-Upgraded</h1>
+  <p class="sub">基于 PinchBench 公开数据的二次聚合排行榜</p>
+
+  <div class="grid">
+    <a class="card" href="./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html">
+      <h2>逐任务排行榜 →</h2>
+      <span>每个 canonical 任务的成功率 / 成本 / 耗时</span>
+    </a>
+    <a class="card" href="./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_category_rankings.html">
+      <h2>大类聚合排行榜 →</h2>
+      <span>按官方大类聚合 + 总排行榜</span>
+    </a>
+  </div>
+
+  <footer>
+    项目源码：<a href="https://github.com/UnicomAI/pinchbench-upgraded">GitHub</a> · 数据来源：<a href="https://pinchbench.com/">PinchBench</a>
+  </footer>
+</body>
+</html>
