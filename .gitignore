@@ -1,0 +1,25 @@
+# Python build artifacts
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+build/
+dist/
+
+# Virtual env
+.venv/
+venv/
+
+# Data caches & generated outputs（用户自行运行 pinchbench-upgraded fetch 生成）
+pinchbench_data/
+
+# Brand logo
+src/pinchbench_upgraded/html/logo.png
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
