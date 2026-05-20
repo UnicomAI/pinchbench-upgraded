@@ -4,9 +4,9 @@
 
 跨平台 Python 工具，对上游 [PinchBench](https://pinchbench.com/) 公开数据做二次处理，产出交互式中英双语 HTML 排行榜。
 
-**逐任务排行榜** [task_rankings.html](./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html)
+- **逐任务排行榜**：[task_rankings.html](./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html)
 
-**大类聚合排行榜**[category_rankings.html](./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_category_rankings.html)
+- **大类聚合排行榜**：[category_rankings.html](./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_category_rankings.html)
 
 
 
