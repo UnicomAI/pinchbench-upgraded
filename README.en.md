@@ -4,7 +4,7 @@
 
 Cross-platform Python tool that performs secondary processing on the upstream [PinchBench](https://pinchbench.com/) public data and produces interactive bilingual (zh/en) HTML leaderboards.
 
-- **Ranking address*：[Ranking address](https://unicomai.github.io/pinchbench-upgraded/)
+- **Ranking address**：[Ranking address](https://unicomai.github.io/pinchbench-upgraded/)
 
 **Highlights**: binary validity check at the **single-submission** granularity → strict version management → three-tier aggregation (per-task / per-category / overall) → 7-metric self-contained HTML (success rate / cost / duration / value / time efficiency / parameters / runs) → country + open-weight filters.
 
