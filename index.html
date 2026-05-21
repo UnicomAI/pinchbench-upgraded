@@ -1,65 +1,368 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>PinchBench-Upgraded · 排行榜 / Leaderboards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PinchBench-Upgraded · Leaderboards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-           max-width: 760px; margin: 8vh auto; padding: 0 24px; color: #1a1a1a; }
-    h1 { font-size: 28px; margin-bottom: 4px; }
-    h1 .en { display: block; font-size: 14px; color: #888; font-weight: 400; margin-top: 4px; letter-spacing: 0.02em; }
-    p.sub { color: #666; margin-top: 0; }
-    p.sub .en { display: block; font-size: 13px; color: #999; margin-top: 2px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-    a.card { display: block; padding: 24px; border: 1px solid #e5e5e5; border-radius: 12px;
-             text-decoration: none; color: inherit; transition: all .15s; }
-    a.card:hover { border-color: #1a1a1a; transform: translateY(-2px); }
-    a.card h2 { margin: 0 0 8px; font-size: 18px; }
-    a.card h2 .en { display: block; font-size: 13px; color: #888; font-weight: 400; margin-top: 3px; }
-    a.card span.desc { color: #666; font-size: 14px; display: block; }
-    a.card span.desc .en { display: block; font-size: 12px; color: #999; margin-top: 2px; }
-    footer { margin-top: 48px; font-size: 13px; color: #999; line-height: 1.7; }
-    footer a { color: #666; }
-    footer .en { display: block; font-size: 12px; color: #aaa; }
+    :root {
+      --red:        #E60012;
+      --red-hover:  #C8000F;
+      --red-light:  rgba(230,0,18,.07);
+      --red-border: rgba(230,0,18,.18);
+
+      --bg:         #F2F4F7;
+      --surface:    #FFFFFF;
+      --surface-2:  #F8F9FB;
+      --surface-3:  #EFF1F5;
+
+      --border:     #DFE2E8;
+      --border-hi:  #C8CBD4;
+
+      --text-1:     #111827;
+      --text-2:     #4B5563;
+      --text-3:     #9CA3AF;
+
+      --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-md:  0 4px 12px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.04);
+
+      --font-ui:    'Outfit', "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --font-data:  'JetBrains Mono', "Courier New", monospace;
+
+      --r:          10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.6;
+      min-height: 100vh;
+      animation: pg-in .4s ease both;
+    }
+    @keyframes pg-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    a { color: var(--red); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Page Shell ─────────────────────────────────────── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 32px 64px;
+    }
+
+    /* ── Top Bar (lang toggle) ──────────────────────────── */
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 3px;
+      box-shadow: var(--shadow-sm);
+    }
+    .lang-toggle input { display: none; }
+    .lang-toggle label {
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-3);
+      cursor: pointer;
+      border-radius: 6px;
+      letter-spacing: .03em;
+      transition: background .15s, color .15s;
+    }
+    .lang-toggle label:hover { color: var(--text-1); }
+    .lang-toggle input:checked + label {
+      background: var(--red-light);
+      color: var(--red);
+    }
+
+    /* ── Page Header ────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--border);
+      position: relative;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 56px; height: 2px;
+      background: var(--red);
+    }
+    .page-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-1);
+      letter-spacing: -.015em;
+      line-height: 1.15;
+    }
+    .page-title .brand-mark {
+      font-family: var(--font-data);
+      font-size: 28px;
+      color: var(--red);
+      margin-right: 4px;
+    }
+    .page-subtitle {
+      margin-top: 10px;
+      font-size: 14.5px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .page-meta {
+      margin-top: 12px;
+      font-size: 11.5px;
+      color: var(--text-3);
+      font-family: var(--font-data);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ── Cards Grid ─────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .page { padding: 36px 20px 48px; }
+      .page-title { font-size: 26px; }
+    }
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      border-bottom: 3px solid var(--red);
+      padding: 22px 24px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow .18s, transform .18s, border-color .18s;
+      color: inherit;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      text-decoration: none;
+      border-color: var(--border-hi);
+      border-bottom-color: var(--red);
+    }
+    .card-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+    .card-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-1);
+      line-height: 1.3;
+    }
+    .card-arrow {
+      color: var(--red);
+      font-family: var(--font-data);
+      font-weight: 500;
+      font-size: 16px;
+      transition: transform .18s;
+    }
+    .card:hover .card-arrow { transform: translateX(3px); }
+    .card-desc {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+
+    /* ── Info Panel ─────────────────────────────────────── */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 18px 22px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .panel-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .panel-title::before {
+      content: '';
+      width: 3px; height: 14px;
+      background: var(--red);
+      border-radius: 2px;
+    }
+    .panel-body {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .panel-body code {
+      font-family: var(--font-data);
+      font-size: 11.5px;
+      background: var(--surface-3);
+      color: var(--red-hover);
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    footer {
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--text-3);
+      line-height: 1.7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer a {
+      color: var(--text-2);
+      border-bottom: 1px dashed var(--border-hi);
+      transition: color .15s, border-color .15s;
+    }
+    footer a:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+      text-decoration: none;
+    }
+    .footer-tag {
+      font-family: var(--font-data);
+      font-size: 11px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    /* ── Bilingual content ──────────────────────────────── */
+    [data-lang="en"] { display: none; }
+    body.lang-en [data-lang="zh"] { display: none; }
+    body.lang-en [data-lang="en"] { display: revert; }
   </style>
 </head>
-<body>
-  <h1>
-    PinchBench-Upgraded
-    <span class="en">PinchBench-Upgraded</span>
-  </h1>
-  <p class="sub">
-    基于 PinchBench 公开数据的二次聚合排行榜
-    <span class="en">Aggregated leaderboards built on public PinchBench data</span>
-  </p>
+<body class="lang-en">
+  <div class="page">
 
-  <div class="grid">
-    <a class="card" href="./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html">
-      <h2>
-        逐任务排行榜 →
-        <span class="en">Per-task rankings →</span>
-      </h2>
-      <span class="desc">
-        每个 canonical 任务的成功率 / 成本 / 耗时
-        <span class="en">Success rate / cost / duration per canonical task</span>
-      </span>
-    </a>
-    <a class="card" href="./pinchbench_data/current-newest2.0.0-20260520/analysis/current_category_rankings/current_selected_category_rankings.html">
-      <h2>
-        大类聚合排行榜 →
-        <span class="en">Category-aggregated rankings →</span>
-      </h2>
-      <span class="desc">
-        按官方大类聚合 + 总排行榜
-        <span class="en">Aggregated by official categories + overall ranking</span>
-      </span>
-    </a>
+    <div class="topbar">
+      <div class="lang-toggle" role="radiogroup" aria-label="Language">
+        <input type="radio" name="lang" id="lang-zh" value="zh">
+        <label for="lang-zh">中文</label>
+        <input type="radio" name="lang" id="lang-en" value="en" checked>
+        <label for="lang-en">EN</label>
+      </div>
+    </div>
+
+    <header class="page-header">
+      <h1 class="page-title">
+        <span class="brand-mark">▍</span>PinchBench-Upgraded
+      </h1>
+      <p class="page-subtitle">
+        <span data-lang="en">Aggregated leaderboards built on public PinchBench data — per-task rankings and category-aggregated rankings with success rate, cost, and duration.</span>
+        <span data-lang="zh">基于 PinchBench 公开数据的二次聚合排行榜——逐任务排行 + 大类聚合排行，覆盖成功率、成本与耗时。</span>
+      </p>
+      <div class="page-meta">v2.0.0 · Snapshot 2026-05-20</div>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="./pinchbench_data/current-newest2.0.0-20260520/analysis/current_task_rankings/current_selected_task_rankings.html">
+        <div class="card-label">
+          <span data-lang="en">Leaderboard 01</span>
+          <span data-lang="zh">榜单 01</span>
+        </div>
+        <div class="card-title">
+          <span>
+            <span data-lang="en">Per-task Rankings</span>
+            <span data-lang="zh">逐任务排行榜</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card-desc">
+          <span data-lang="en">Success rate, cost, and duration for every canonical task.</span>
+          <span data-lang="zh">每个 canonical 任务的成功率、成本与耗时。</span>
+        </div>
+      </a>
+
+      <a class="card" href="./pinchbench_data/current-newest2.0.0-20260520/analysis/current_category_rankings/current_selected_category_rankings.html">
+        <div class="card-label">
+          <span data-lang="en">Leaderboard 02</span>
+          <span data-lang="zh">榜单 02</span>
+        </div>
+        <div class="card-title">
+          <span>
+            <span data-lang="en">Category-aggregated Rankings</span>
+            <span data-lang="zh">大类聚合排行榜</span>
+          </span>
+          <span class="card-arrow">→</span>
+        </div>
+        <div class="card-desc">
+          <span data-lang="en">Rankings aggregated by official PinchBench categories, plus an overall ranking.</span>
+          <span data-lang="zh">按 PinchBench 官方大类聚合 + 总排行榜。</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <span data-lang="en">About</span>
+        <span data-lang="zh">项目说明</span>
+      </div>
+      <div class="panel-body">
+        <span data-lang="en">PinchBench-Upgraded is an independent re-aggregation layer over the public <a href="https://pinchbench.com/" target="_blank" rel="noopener">PinchBench</a> dataset. The pipeline runs in five steps: <code>fetch → inventory → scope → task-rankings → category-rankings</code>. See <a href="https://github.com/UnicomAI/pinchbench-upgraded" target="_blank" rel="noopener">README</a> for methodology and metric definitions.</span>
+        <span data-lang="zh">PinchBench-Upgraded 在 <a href="https://pinchbench.com/" target="_blank" rel="noopener">PinchBench</a> 公开数据之上做二次聚合，流水线分五步：<code>fetch → inventory → scope → task-rankings → category-rankings</code>。指标口径与方法论详见 <a href="https://github.com/UnicomAI/pinchbench-upgraded" target="_blank" rel="noopener">README</a>。</span>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <span data-lang="en">Source: <a href="https://github.com/UnicomAI/pinchbench-upgraded" target="_blank" rel="noopener">GitHub</a> · Data: <a href="https://pinchbench.com/" target="_blank" rel="noopener">PinchBench</a></span>
+        <span data-lang="zh">项目源码：<a href="https://github.com/UnicomAI/pinchbench-upgraded" target="_blank" rel="noopener">GitHub</a> · 数据来源：<a href="https://pinchbench.com/" target="_blank" rel="noopener">PinchBench</a></span>
+      </div>
+      <div class="footer-tag">UnicomAI · PinchBench-Upgraded</div>
+    </footer>
+
   </div>
 
-  <footer>
-    项目源码：<a href="https://github.com/UnicomAI/pinchbench-upgraded">GitHub</a> · 数据来源：<a href="https://pinchbench.com/">PinchBench</a>
-    <span class="en">Source: <a href="https://github.com/UnicomAI/pinchbench-upgraded">GitHub</a> · Data: <a href="https://pinchbench.com/">PinchBench</a></span>
-  </footer>
+  <script>
+    (() => {
+      const apply = () => {
+        const v = document.querySelector('input[name=lang]:checked')?.value || 'en';
+        document.body.classList.toggle('lang-en', v === 'en');
+        document.documentElement.lang = v === 'en' ? 'en' : 'zh-CN';
+      };
+      document.querySelectorAll('input[name=lang]').forEach(r => r.addEventListener('change', apply));
+      apply();
+    })();
+  </script>
 </body>
 </html>
