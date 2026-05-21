@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}PinchBench-Upgraded 大类排行榜{% endblock %}
+{% block title %}{% if filter_defaults.lang == 'en' %}Category Rankings · PinchBench-Upgraded{% else %}大类排行榜 · PinchBench-Upgraded{% endif %}{% endblock %}
 
 {% block sidebar %}
 <div class="sidebar-list">
