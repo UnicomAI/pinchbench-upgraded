@@ -18,7 +18,7 @@ FILTER_DEFAULTS = {
     "min_obs": 1,
     "country": "all",
     "open_source": "all",
-    "lang": "zh",
+    "lang": "en",
 }
 
 # ── 文件名安全化 ──────────────────────────────────────────────────────────────
