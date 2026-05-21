@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="{{ 'en' if filter_defaults.lang == 'en' else 'zh-CN' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -677,7 +677,7 @@
     {% block extra_styles %}{% endblock %}
   </style>
 </head>
-<body>
+<body{% if filter_defaults.lang == 'en' %} class="lang-en"{% endif %}>
   <nav id="sidebar" aria-label="页面导航">
     <div class="top-brand">
       {% if logo_src %}
@@ -808,69 +808,8 @@
       obsSlider.addEventListener('input', () => { obsVal.textContent = obsSlider.value; });
     }
 
-    /* ── i18n ────────────────────────────────────────────────── */
-    const I18N = {
-      sidebar_title:        { zh: 'PinchBench-Upgraded · 排行榜',      en: 'PinchBench-Upgraded · Leaderboard' },
-      section_overview:     { zh: '概览',                      en: 'Overview' },
-      page_title_task:      { zh: '任务排行榜',                en: 'Task Rankings' },
-      page_title_cat:       { zh: '大类排行榜',                en: 'Category Rankings' },
-      filter_obs:           { zh: '运行次数阈值',              en: 'Min Runs' },
-      filter_country:       { zh: '国别',                      en: 'Country' },
-      filter_china:         { zh: '中国',                      en: 'China' },
-      filter_other:         { zh: '其他国家',                  en: 'Other' },
-      filter_all:           { zh: '不限',                      en: 'All' },
-      filter_open_label:    { zh: '开源',                      en: 'Source' },
-      filter_open:          { zh: '开源',                      en: 'Open' },
-      filter_closed:        { zh: '闭源',                      en: 'Closed' },
-      col_seq:              { zh: '#',                          en: '#' },
-      col_attr:             { zh: '属性',                      en: 'Attr.' },
-      col_rank:             { zh: '排名',                      en: 'Rank' },
-      col_model:            { zh: '模型',                      en: 'Model' },
-      col_provider:         { zh: '供应商',                    en: 'Provider' },
-      col_run_count:        { zh: '运行次数',                  en: 'Runs' },
-      col_success_rate:     { zh: '成功率 (%)',                en: 'Success (%)' },
-      col_cost:             { zh: '成本 ($)',                  en: 'Cost ($)' },
-      col_duration:         { zh: '耗时 (s)',                  en: 'Duration (s)' },
-      col_duration_min:     { zh: '耗时 (min)',                en: 'Duration (min)' },
-      col_model_size:       { zh: '参数量 (B)',                en: 'Size (B)' },
-      col_value:            { zh: '性价比 (%/USD)',            en: 'Value (%/USD)' },
-      col_time_eff:         { zh: '时效比 (%/s)',              en: 'Time Eff. (%/s)' },
-      col_time_eff_min:     { zh: '时效比 (%/min)',            en: 'Time Eff. (%/min)' },
-      col_model_name:       { zh: '模型',                      en: 'Model' },
-      tag_china_open:       { zh: '中国 · 开源',                en: 'China · Open' },
-      tag_china_closed:     { zh: '中国 · 闭源',                en: 'China · Closed' },
-      tag_other_open:       { zh: '外国 · 开源',                en: 'Other · Open' },
-      tag_other_closed:     { zh: '外国 · 闭源',                en: 'Other · Closed' },
-      col_total_subs:       { zh: '提交记录总数',                en: 'Total Submissions' },
-      col_valid_subs:       { zh: '有效记录总数',                en: 'Valid Submissions' },
-      col_canonical_extra:  { zh: '任务数量过多',              en: 'Extra Tasks' },
-      col_canonical_missing:{ zh: '任务数量过少',              en: 'Missing Tasks' },
-      col_task_time_zero:   { zh: '缺少时间统计',              en: 'Missing Time' },
-      col_cost_zero:        { zh: '缺少成本统计',              en: 'Missing Cost' },
-      section_metrics:      { zh: '指标说明',                  en: 'Metrics' },
-      section_models:       { zh: '模型列表',                  en: 'Models' },
-      section_filtered_out: { zh: '筛除模型归因',              en: 'Filtered-out Attribution' },
-      section_catoverview:  { zh: '大类与任务',                en: 'Categories & Tasks' },
-      section_overall:      { zh: '总排行榜',                  en: 'Overall Ranking' },
-      /* 新版 stat 卡片 i18n */
-      stat_benchmark:       { zh: 'PinchBench 版本',           en: 'PinchBench Version' },
-      stat_models_card:     { zh: '模型',                      en: 'Models' },
-      stat_submissions_card:{ zh: '提交记录',                  en: 'Submissions' },
-      stat_sub_official:    { zh: '官方',                      en: 'Official' },
-      stat_sub_filtered:    { zh: '筛除',                      en: 'Filtered' },
-      stat_sub_valid:       { zh: '有效',                      en: 'Valid' },
-      stat_sub_total:       { zh: '总数',                      en: 'Total' },
-      col_record_count:     { zh: '记录总数',                  en: 'Submissions' },
-      tag_open_china:       { zh: '开源 · 国产',               en: 'Open · China' },
-      tag_open:             { zh: '开源',                      en: 'Open Source' },
-      tag_china:            { zh: '国产',                      en: 'China' },
-      task_label_category:  { zh: '类别：',                    en: 'Category: ' },
-      task_label_grading:   { zh: '评分机制：',                en: 'Grading: ' },
-      task_label_models:    { zh: '个模型',                    en: ' models' },
-      cat_label_scenarios:  { zh: '个任务',                    en: ' tasks' },
-      sidebar_tasks:        { zh: '任务列表',                  en: 'Tasks' },
-      sidebar_cats:         { zh: '大类列表',                  en: 'Categories' },
-    };
+    /* ── i18n（字典从 Python 端 I18N_DICT 注入，single source of truth） ─ */
+    const I18N = {{ I18N | tojson }};
     // 挂 window 让另一 IIFE（Table Sorting）的 label() 也能访问字典
     window.I18N = I18N;
 
